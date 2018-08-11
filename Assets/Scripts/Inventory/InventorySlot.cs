@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour {
-
-    public GameObject itemDescriptionPanel;
+    
     public Text weightText;
 
     private Item item;
@@ -24,9 +23,11 @@ public class InventorySlot : MonoBehaviour {
     public void ClickItemButton()
     {
         Debug.Log("ClickItemButton at slot:" + itemSlotIndex);
-        //itemDescriptionPanel.SetActive(true);
-        // Do something when you click the item
-        // Maybe open a panel that shows description and tips and a use button?
+        
+        GameObject itemDescriptionPanel = FindObjectOfType<InventoryUI>().itemDescriptionPanel;
+        itemDescriptionPanel.SetActive(true);
+
+        FindObjectOfType<InventoryUI>().SetItemDescription(this.item);
     }
 
     public void ClickDeleteButton()

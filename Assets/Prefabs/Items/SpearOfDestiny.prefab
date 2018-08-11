@@ -52,6 +52,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Spear of Destiny
-  description: It is actaully one of his garden tool.
+  description: 'Little known fact: It is actually Destiny''s garden shovel.'
   weight: 3
   icon: {fileID: 21300108, guid: 9854522c700d4814d931230a83cc3fed, type: 3}

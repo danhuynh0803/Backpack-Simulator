@@ -21,7 +21,7 @@ public class Inventory : MonoBehaviour {
     }
     #endregion
 
-    private List<Item> itemList = new List<Item>(); 
+    public List<Item> itemList = new List<Item>(); 
     private InventoryUI inventoryUI;
 
     private void Start()
@@ -30,6 +30,17 @@ public class Inventory : MonoBehaviour {
         if (instance.inventoryUI == null)
         {
             Debug.LogError("inventoryUI is null");
+        }
+
+        // Add initial items into the bag
+        int count = 0;
+        foreach (Item item in itemList)
+        {
+            if (item != null)
+            {
+                inventoryUI.AddItemToUI(item, count);
+                count++;
+            }
         }
     }
 

@@ -6,6 +6,7 @@ public class Overworld : MonoBehaviour {
 
     [Header("Enemy Encounters")]
     public GameObject frostButton;
+    public GameObject lostGhostButton;
     public GameObject seaButton;
     public GameObject sandButton;
     public GameObject mountainButton;
@@ -23,17 +24,21 @@ public class Overworld : MonoBehaviour {
     // Use this for initialization
     void Start() {
 
-        float rate = Random.Range(0.0f, 2.0f);
+        float rate = Random.Range(0.0f, 3.0f);
         float rate2 = Random.Range(0.0f, 2.0f);
         float rate3 = Random.Range(0.0f, 2.0f);
         float rate4 = Random.Range(0.0f, 2.0f);
         float rate5 = Random.Range(0.0f, 4.0f);
 
-        if (rate > 1.0f)
+        if (rate > 2.0f)
+        {
+            lostGhostButton.SetActive(true);
+        }
+        else if (rate > 1.0f)
         {
             frostButton.SetActive(true);
         }
-        if (rate < 1.0f)
+        else if (rate > 0.0f)
         {
             seaButton.SetActive(true);
         }

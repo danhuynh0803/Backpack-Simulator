@@ -51,8 +51,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fb6e9f9c8555de42ab9b3895249b0e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Armor Potion
-  description: Increase armor.
+  name: Ironhide Potion
+  description: A good potion for defense but weighs a lot from all the mercury in
+    it.
   weight: 15
   icon: {fileID: 21300130, guid: 09802840fc1be9840b4a4703d1c8d13d, type: 3}
   healAmount: 25

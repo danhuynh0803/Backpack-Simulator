@@ -195,7 +195,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7bca868893241f42a2553cef5d995ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemDescriptionPanel: {fileID: 0}
   weightText: {fileID: 114475027852516956}
   itemIcon: {fileID: 114197953466688104}
   itemSlotIndex: 0

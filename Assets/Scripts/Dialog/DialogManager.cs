@@ -59,6 +59,7 @@ public class DialogManager : MonoBehaviour {
         }
         ContinueToNextSentence();
     }
+
     public void ContinueToNextSentence()
     {
         if (isPrintingText)

@@ -4,8 +4,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
-{
+{    
     public GameObject battleCanvas;
+    public GameObject encountersCanvas;
+
+    [Header("Pause Menu related")]
     public GameObject controlMenu;
     public GameObject soundMenu;
     public GameObject creditMenu;
@@ -18,16 +21,23 @@ public class MenuController : MonoBehaviour
     public Stack<GameObject> menuStack;
 
     private bool isPaused;
+    private bool isBattleCanvasOpen;
     private Fading fadeController;
 
     void Start()
     {
+        isBattleCanvasOpen = false;
         isPaused = false;
         menuStack = new Stack<GameObject>();
         fadeController = FindObjectOfType<Fading>();
     }
     void Update()
     {
+        if (isBattleCanvasOpen)
+        {
+
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             // Close any open windows that is NOT the main pause menu
@@ -99,14 +109,20 @@ public class MenuController : MonoBehaviour
         }
     }
 
-    public void OpenBattleCanvas()
+    public void ToggleBattleCanvas()
     {
-        battleCanvas.SetActive(true);
-    }
+        isBattleCanvasOpen = !isBattleCanvasOpen;
 
-    public void CloseBattleCanvas()
-    {
-        battleCanvas.SetActive(false);
+        if (isBattleCanvasOpen)
+        {
+            battleCanvas.SetActive(true);
+            encountersCanvas.SetActive(false);
+        }
+        else
+        {
+            battleCanvas.SetActive(false);
+            encountersCanvas.SetActive(true);
+        }
     }
 
     public void ToggleControlMenu(bool boolean)

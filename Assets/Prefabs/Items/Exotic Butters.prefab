@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Exotic Butters
-  description: These used to be given as work-related gifts until people started realizing
-    why certain employees did not last a few months past retirement.
+  description: Once given as work-related gifts until people started realizing why
+    certain employees did not last a few months past retirement.
   weight: 1
   icon: {fileID: 21300200, guid: 9854522c700d4814d931230a83cc3fed, type: 3}

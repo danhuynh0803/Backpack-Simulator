@@ -52,6 +52,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Cotton
-  description: "Cotton doesn\u2019t weigh a lot."
+  description: Why do they call it cotton when it doesn't weigh a ton?
   weight: 0
   icon: {fileID: 21300158, guid: 09802840fc1be9840b4a4703d1c8d13d, type: 3}

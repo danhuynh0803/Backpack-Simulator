@@ -23,6 +23,8 @@ public class GameController : MonoBehaviour
                         //Later use a function to set from button
     private bool isGameOver;
     public float turnDelay; // Seconds before moving to next turn;
+    public bool isDialogFinished;
+    private MenuController menuController;
 
     [Header("Battle canvases")]
     public GameObject battleCanvas;
@@ -32,6 +34,8 @@ public class GameController : MonoBehaviour
         isGameOver = false;
         //player = Player.player;
         player = FindObjectOfType<Player>();
+        menuController = FindObjectOfType<MenuController>();
+
         if (player == null)
         {
             Debug.LogError("ERROR: No player instance was found");
@@ -51,7 +55,7 @@ public class GameController : MonoBehaviour
             // Display any entering dialog we feel we need
             // "Player is battling a <enemy_name>"
 
-            battleCanvas.SetActive(true);
+            menuController.ToggleBattleCanvas();
             CombatLoop();
         }
         else
@@ -72,23 +76,27 @@ public class GameController : MonoBehaviour
 
         Debug.Log("Enemy health=" + enemy.health + "\tplayer health=" + player.GetHealth());
         while (enemy.health > 0 && player.GetHealth() > 0)
-        {          
-            // Output to dialog the turn
-            if (turnCount % 2 == 0)
+        {
+            if (isDialogFinished)
             {
-                // Players turn                
-                Debug.Log("Player's turn");
-                player.Attack();       
-            }
-            else
-            {
-                // Enemy's turn
-                Debug.Log("Enemy's turn");
-                enemy.Attack();
-            }
+                //StartDialog()
+                // Output to dialog the turn
+                if (turnCount % 2 == 0)
+                {
+                    // Players turn                
+                    Debug.Log("Player's turn");
+                    player.Attack();
+                }
+                else
+                {
+                    // Enemy's turn
+                    Debug.Log("Enemy's turn");
+                    enemy.Attack();
+                }
 
-            turnCount++;
-            //StartCoroutine(Wait(turnDelay));
+                turnCount++;
+                StartCoroutine(Wait(turnDelay));
+            }
         }
 
         EndCombat();

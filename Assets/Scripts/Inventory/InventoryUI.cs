@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class InventoryUI : MonoBehaviour {
@@ -17,12 +18,23 @@ public class InventoryUI : MonoBehaviour {
     #endregion
 
     Inventory inventory;
+    public GameObject itemDescriptionPanel;
+    public Text itemName;
+    public Text itemDescriptionText;
+    public Image itemDescriptionIcon;
     public GameObject inventorySlot;
 
 	// Use this for initialization
 	void Start () {
         inventory = Inventory.instance;
 	} 
+
+    public void SetItemDescription(Item item)
+    {
+        itemName.text = item.name;
+        itemDescriptionText.text = item.description;
+        itemDescriptionIcon.sprite = item.icon;
+    }
     
 	// Update is called once per frame
 	public void AddItemToUI (Item item, int slotIndex)    

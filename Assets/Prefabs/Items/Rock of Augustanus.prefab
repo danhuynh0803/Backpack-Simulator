@@ -52,7 +52,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Rock of Augustanus
-  description: It was just a random rock laying on the ground.
+  description: Although its just a random rock, the Academy of Naming Conventions
+    won't be invented for another hundred years.
   weight: 5
-  icon: {fileID: 21300012, guid: 2c02e90151cf4c5449c139bed9ee4b58, type: 3}
+  icon: {fileID: 21300010, guid: 2c02e90151cf4c5449c139bed9ee4b58, type: 3}
   healAmount: 0

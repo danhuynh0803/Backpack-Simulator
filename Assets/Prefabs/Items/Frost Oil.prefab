@@ -52,6 +52,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Frost Oil
-  description: +5 frost damage.
+  description: +5 Frost Damage. +5 Stink.
   weight: 3
   icon: {fileID: 21300106, guid: 09802840fc1be9840b4a4703d1c8d13d, type: 3}
