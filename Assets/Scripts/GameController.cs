@@ -24,6 +24,9 @@ public class GameController : MonoBehaviour
     private bool isGameOver;
     public float turnDelay; // Seconds before moving to next turn;
 
+    [Header("Battle canvases")]
+    public GameObject battleCanvas;
+
     private void Start()
     {
         isGameOver = false;
@@ -34,7 +37,8 @@ public class GameController : MonoBehaviour
             Debug.LogError("ERROR: No player instance was found");
         }
 
-        CombatLoop();
+        // testing combat
+        //EnterCombat(enemy);
     }
 
     public void EnterCombat(Enemy newEnemy)
@@ -42,8 +46,18 @@ public class GameController : MonoBehaviour
         // Set the current enemy that player is battling
         enemy = newEnemy;
 
-        // Display any entering dialog we feel we need
-        // "Player is battling a <enemy_name>"
+        if (enemy != null)
+        {
+            // Display any entering dialog we feel we need
+            // "Player is battling a <enemy_name>"
+
+            battleCanvas.SetActive(true);
+            CombatLoop();
+        }
+        else
+        {
+            Debug.LogError("No enemy was set for encounter!");
+        }       
     }
 
     // Controls combat loop

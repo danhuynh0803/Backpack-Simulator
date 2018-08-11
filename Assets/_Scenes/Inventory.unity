@@ -304,59 +304,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 22127345}
---- !u!1 &150544527
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1950360225898482, guid: 99bf601001f18b14eb5bf862433193e2,
-    type: 2}
-  m_PrefabInternal: {fileID: 223262891}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 150544529}
-  - component: {fileID: 150544528}
-  m_Layer: 0
-  m_Name: GhostEnemyTest
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &150544528
+--- !u!114 &150544528 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114928852662418850, guid: 99bf601001f18b14eb5bf862433193e2,
+  m_PrefabParentObject: {fileID: 114538805447655552, guid: 99bf601001f18b14eb5bf862433193e2,
     type: 2}
   m_PrefabInternal: {fileID: 223262891}
-  m_GameObject: {fileID: 150544527}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee465c06ee4d3a746bed937491f16f0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  name: Ghost
-  health: 6
-  damage: 2
-  armor: 0
-  itemDropList:
-  - {fileID: 114285165700791900, guid: 9f3a86bd36fdd7a4ba6ad0394d2be259, type: 2}
-  - {fileID: 114285165700791900, guid: f29a1bf645e0154489821325db206161, type: 2}
-  - {fileID: 114285165700791900, guid: 78f5e07890607e848b731bdbc200b7c2, type: 2}
-  - {fileID: 114285165700791900, guid: f29a1bf645e0154489821325db206161, type: 2}
-  - {fileID: 114285165700791900, guid: 9f3a86bd36fdd7a4ba6ad0394d2be259, type: 2}
---- !u!4 &150544529
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 4995173317710358, guid: 99bf601001f18b14eb5bf862433193e2,
-    type: 2}
-  m_PrefabInternal: {fileID: 223262891}
-  m_GameObject: {fileID: 150544527}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 321.72827, y: 166.97159, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &223262891
 Prefab:
   m_ObjectHideFlags: 0
@@ -364,76 +317,36 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114928852662418850, guid: 99bf601001f18b14eb5bf862433193e2,
-        type: 2}
-      propertyPath: itemDropList.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4995173317710358, guid: 99bf601001f18b14eb5bf862433193e2, type: 2}
+    - target: {fileID: 4215475249016130, guid: 99bf601001f18b14eb5bf862433193e2, type: 2}
       propertyPath: m_LocalPosition.x
       value: 321.72827
       objectReference: {fileID: 0}
-    - target: {fileID: 4995173317710358, guid: 99bf601001f18b14eb5bf862433193e2, type: 2}
+    - target: {fileID: 4215475249016130, guid: 99bf601001f18b14eb5bf862433193e2, type: 2}
       propertyPath: m_LocalPosition.y
       value: 166.97159
       objectReference: {fileID: 0}
-    - target: {fileID: 4995173317710358, guid: 99bf601001f18b14eb5bf862433193e2, type: 2}
+    - target: {fileID: 4215475249016130, guid: 99bf601001f18b14eb5bf862433193e2, type: 2}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4995173317710358, guid: 99bf601001f18b14eb5bf862433193e2, type: 2}
+    - target: {fileID: 4215475249016130, guid: 99bf601001f18b14eb5bf862433193e2, type: 2}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4995173317710358, guid: 99bf601001f18b14eb5bf862433193e2, type: 2}
+    - target: {fileID: 4215475249016130, guid: 99bf601001f18b14eb5bf862433193e2, type: 2}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4995173317710358, guid: 99bf601001f18b14eb5bf862433193e2, type: 2}
+    - target: {fileID: 4215475249016130, guid: 99bf601001f18b14eb5bf862433193e2, type: 2}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4995173317710358, guid: 99bf601001f18b14eb5bf862433193e2, type: 2}
+    - target: {fileID: 4215475249016130, guid: 99bf601001f18b14eb5bf862433193e2, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4995173317710358, guid: 99bf601001f18b14eb5bf862433193e2, type: 2}
+    - target: {fileID: 4215475249016130, guid: 99bf601001f18b14eb5bf862433193e2, type: 2}
       propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 114928852662418850, guid: 99bf601001f18b14eb5bf862433193e2,
-        type: 2}
-      propertyPath: itemDropList.Array.data[0]
-      value: 
-      objectReference: {fileID: 114285165700791900, guid: 9f3a86bd36fdd7a4ba6ad0394d2be259,
-        type: 2}
-    - target: {fileID: 114928852662418850, guid: 99bf601001f18b14eb5bf862433193e2,
-        type: 2}
-      propertyPath: itemDropList.Array.data[1]
-      value: 
-      objectReference: {fileID: 114285165700791900, guid: f29a1bf645e0154489821325db206161,
-        type: 2}
-    - target: {fileID: 114928852662418850, guid: 99bf601001f18b14eb5bf862433193e2,
-        type: 2}
-      propertyPath: itemDropList.Array.data[2]
-      value: 
-      objectReference: {fileID: 114285165700791900, guid: 78f5e07890607e848b731bdbc200b7c2,
-        type: 2}
-    - target: {fileID: 114928852662418850, guid: 99bf601001f18b14eb5bf862433193e2,
-        type: 2}
-      propertyPath: itemDropList.Array.data[3]
-      value: 
-      objectReference: {fileID: 114285165700791900, guid: f29a1bf645e0154489821325db206161,
-        type: 2}
-    - target: {fileID: 114928852662418850, guid: 99bf601001f18b14eb5bf862433193e2,
-        type: 2}
-      propertyPath: itemDropList.Array.data[4]
-      value: 
-      objectReference: {fileID: 114285165700791900, guid: 9f3a86bd36fdd7a4ba6ad0394d2be259,
-        type: 2}
-    - target: {fileID: 114928852662418850, guid: 99bf601001f18b14eb5bf862433193e2,
-        type: 2}
-      propertyPath: health
       value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -917,6 +830,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 150544528}
   turnDelay: 1
+  battleCanvas: {fileID: 0}
 --- !u!1 &860107319
 GameObject:
   m_ObjectHideFlags: 0

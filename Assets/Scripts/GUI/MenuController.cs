@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
-
+    public GameObject battleCanvas;
     public GameObject controlMenu;
     public GameObject soundMenu;
     public GameObject creditMenu;
@@ -97,6 +97,16 @@ public class MenuController : MonoBehaviour
             Time.timeScale = 1.0f;
             pauseMenu.SetActive(false);
         }
+    }
+
+    public void OpenBattleCanvas()
+    {
+        battleCanvas.SetActive(true);
+    }
+
+    public void CloseBattleCanvas()
+    {
+        battleCanvas.SetActive(false);
     }
 
     public void ToggleControlMenu(bool boolean)
