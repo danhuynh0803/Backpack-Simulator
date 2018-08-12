@@ -10,6 +10,7 @@ public class ElementalPotion : Item {
     public override bool ActivateEffect()
     {
         FindObjectOfType<Player>().IncrementElemental(elemental);
+        SoundController.Play((int)SFX.Potion, 0.5f);
         return true;
     }
 }

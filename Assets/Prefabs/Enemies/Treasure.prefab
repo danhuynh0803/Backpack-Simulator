@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Treasure
+  maxHealth: 0
   health: 0
   damage: 0
   armor: 0
@@ -66,4 +67,5 @@ MonoBehaviour:
   - {fileID: 114285165700791900, guid: 9f3a86bd36fdd7a4ba6ad0394d2be259, type: 2}
   - {fileID: 114388840988385336, guid: afa44566f9d7ac041b128c809e2025af, type: 2}
   - {fileID: 114388840988385336, guid: 79ea154150504a447baaae8387872a37, type: 2}
+  - {fileID: 114388840988385336, guid: d732fe8afb15eeb459beeb8b9d1122dd, type: 2}
   dialogManager: {fileID: 0}

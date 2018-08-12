@@ -15,9 +15,7 @@ public class RougeElemental : Enemy
            "Rouge Elemental's turn",
            "Rouge Elemental deals " + damageDealt + " damage.",
         };
-        Dialog enemyTurn = new Dialog("enemy turn", sentences);
-        dialogManager.isInDialog = true;
-        dialogManager.StartDialog(enemyTurn);
+        dialogManager.PrintEnemyNextSentence(sentences);
     }
 
     public override void Death()

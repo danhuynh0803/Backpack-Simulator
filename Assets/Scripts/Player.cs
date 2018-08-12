@@ -2,6 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Status
+{
+    Encumbered,
+    Poison,
+    Frost,
+    ElementalDamage
+};
+
 public class Player : MonoBehaviour {
 
     #region Singleton
@@ -28,10 +36,36 @@ public class Player : MonoBehaviour {
     private DialogManager dialogManager;
     public bool isPoisoned = false;
     public bool isEncumbered = false;
+    public bool isDemoralized = false;
+  
+    // Four status effects: 
+    // 1) encumbered, 2) poison, 3) frost, 4) elemental damage
+    private int[] statusEffects = new int[4];
+
+    public void AddStatusEffect(Status status, int statusAmount)
+    {
+        statusEffects[(int)status] += statusAmount;
+    }
+
+    public void RemoveStatusEffect(Status status, int statusAmount)
+    {
+        statusEffects[(int)status] -= statusAmount;
+        // Set to zero to avoid going negative (resulting in a buff)
+        if (statusEffects[(int)status] <= 0)
+        {
+            statusEffects[(int)status] = 0;
+        }
+    }
+
+    public int GetStatusEffect(Status status)
+    {
+        return statusEffects[(int)status];
+    }
 
     private void Awake()
     {
         health = maxHealth;
+        weight = 0;
         Debug.Log("Player health: " + health);
     }
     public void Start()
@@ -70,13 +104,10 @@ public class Player : MonoBehaviour {
             damageDealt = Mathf.Clamp(damage + elementalDamage - enemy.armor, 0, 99999);
         if (damageDealt > 0)
         {
-            // Play a damage sound
+            SoundController.Play((int)SFX.Attack, 0.5f);
         }
-        else
-        {
-            // Play a block sound
-        }
-        enemy.health -= damageDealt;
+        enemy.health = Mathf.Clamp(enemy.health - damageDealt, 0, enemy.maxHealth);
+
         if (enemy.name == "Sand Golem" && damageDealt > 0)
         {
             string[] sentences =
@@ -86,10 +117,21 @@ public class Player : MonoBehaviour {
                 CheckEnemyHealth(enemy.health, enemy),
                 "Obtain an iron ore!"
             };
-            Dialog playerTurn = new Dialog("enemy turn", sentences);
             Inventory.instance.AddItem(enemy.itemDropList[0]);
-            dialogManager.isInDialog = true;
-            dialogManager.StartDialog(playerTurn);
+            PrintNextSentence(sentences);
+        }
+        else
+        if (enemy.name == "Bandit" && damageDealt > 0)
+        {
+            string[] sentences =
+            {
+                "Player's turn",
+                "Player deals " + damageDealt + " damage.",
+                CheckEnemyHealth(enemy.health, enemy),
+                "Obtain an gold ore!"
+            };
+            Inventory.instance.AddItem(enemy.itemDropList[0]);
+            PrintNextSentence(sentences);
         }
         else
         {
@@ -99,11 +141,17 @@ public class Player : MonoBehaviour {
                 "Player deals " + damageDealt + " damage.",
                 CheckEnemyHealth(enemy.health, enemy)
             };
-            Dialog playerTurn = new Dialog("enemy turn", sentences);
-            dialogManager.isInDialog = true;
-            dialogManager.StartDialog(playerTurn);
+            PrintNextSentence(sentences);
         }
     }
+    public void PrintNextSentence(string[] sentences)
+    {
+        Dialog playerTurn = new Dialog("enemy turn", sentences);
+        dialogManager.isInDialog = true;
+        dialogManager.StartDialog(playerTurn);
+        dialogManager.ContinueToNextSentence();
+    }
+
     public string CheckEnemyHealth(int enemyHealth, Enemy enemy)
     {
         if (enemyHealth <= 0)
@@ -115,7 +163,6 @@ public class Player : MonoBehaviour {
     {
         inventory.AddItems(droppedItems);
     }
-
 
     public int GetHealth()
     {
@@ -134,7 +181,7 @@ public class Player : MonoBehaviour {
 
     public void DecrementArmor(int decArmor)
     {
-        armor += decArmor;
+        armor -= decArmor;
     }
 
     public void IncrementHealth(int recovery)
@@ -144,8 +191,11 @@ public class Player : MonoBehaviour {
 
     public int DecrementHealth(int damage)
     {
-        int totalDamage = Mathf.Clamp((damage - armor), 0, 99999);
-        health = Mathf.Clamp((health - damage - armor), 0, maxHealth);
+        //making sure armor calculation is included when this method is called
+        int totalDamage = Mathf.Clamp(damage, 0, 99999);
+        if(totalDamage == 0)
+            SoundController.Play((int)SFX.Defend, 0.5f);
+        health = Mathf.Clamp((health - damage), 0, maxHealth);
         if (isPoisoned)
         {
             health = Mathf.Clamp((health - 2), 0, maxHealth);
@@ -154,16 +204,21 @@ public class Player : MonoBehaviour {
         return totalDamage;
     }
 
+    public void AddPermanentWeight(int itemWeight)
+    {
+        weight += itemWeight;
+    }
+
     public int GetWeight()
     {
-        int totalWeight = 0;
+        int bagWeight = 0;
         foreach (Item item in Inventory.instance.itemList)
         {
             if (item != null)
             {
-                totalWeight += item.weight;
+                bagWeight += item.weight;
             }
         }
-        return totalWeight;
+        return bagWeight + weight;
     }
 }

@@ -10,14 +10,13 @@ public class Golem : Enemy {
     {
         Player player = FindObjectOfType<Player>();
         int damageDealt = player.DecrementHealth(damage - player.armor);
+        SoundController.Play((int)SFX.StoneGolem, 0.5f);
         string[] sentences =
             {
                 "Sand Golem's turn",
                 "Sand Golem deals " + damageDealt + " damage.",
             };
-        Dialog enemyTurn = new Dialog("enemy turn", sentences);
-        dialogManager.isInDialog = true;
-        dialogManager.StartDialog(enemyTurn);
+        dialogManager.PrintEnemyNextSentence(sentences);
     }
 
     public override void Death()

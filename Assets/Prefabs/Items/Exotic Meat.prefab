@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Exotic Meat
   description: Not for exotic vegetarians.
-  weight: 1
+  weight: 3
   icon: {fileID: 21300204, guid: 9854522c700d4814d931230a83cc3fed, type: 3}

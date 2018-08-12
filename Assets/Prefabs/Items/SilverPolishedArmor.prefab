@@ -52,6 +52,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Silver Armor
-  description: Its just spraypainted silver.
+  description: Spraypainted silver? Where did they get spraypaint?
   weight: 25
   icon: {fileID: 21300156, guid: 9854522c700d4814d931230a83cc3fed, type: 3}

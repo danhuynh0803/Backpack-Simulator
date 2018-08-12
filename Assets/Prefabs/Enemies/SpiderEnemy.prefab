@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Spider
+  maxHealth: 15
   health: 15
   damage: 2
   armor: 0
@@ -64,4 +65,5 @@ MonoBehaviour:
   - {fileID: 114388840988385336, guid: f52a5ed758d5147479b5a0ae6b589986, type: 2}
   - {fileID: 114388840988385336, guid: ca7132426e1b6fe4d854eb514180695d, type: 2}
   - {fileID: 114388840988385336, guid: 8391f0b4146ab40409d48dbfdecfe8f6, type: 2}
+  - {fileID: 114951075248145476, guid: 7e20f41ef3467af4a9e5b4df43299613, type: 2}
   dialogManager: {fileID: 0}

@@ -51,9 +51,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c82ac2c3f30e60444858bcdb8880e517, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: RougeElemental
-  health: 5
+  name: Rogue Elemental
+  maxHealth: 45
+  health: 45
   damage: 3
   armor: 1
-  itemDropList: []
+  itemDropList:
+  - {fileID: 114648063813858984, guid: 74a776db9424f8149a31a86fdfeb9807, type: 2}
+  - {fileID: 114648063813858984, guid: 09e61ed1b51614c4f9e5d5fc4edd2d20, type: 2}
   dialogManager: {fileID: 0}

@@ -10,6 +10,7 @@ public class Antivenom : Item {
         Player player = FindObjectOfType<Player>();
         player.isPoisoned = false;
         Debug.Log("Player is cured");
+        SoundController.Play((int)SFX.Potion, 0.5f);
         return true;
     }
 }

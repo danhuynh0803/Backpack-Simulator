@@ -53,6 +53,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Junk
   description: "People say another man\u2019s junk is another man\u2019s treasure.
-    Those people are often idiots. Junk might be useful, might not be useful."
+    Those people are often idiots."
   weight: 1
   icon: {fileID: 21300198, guid: 9854522c700d4814d931230a83cc3fed, type: 3}

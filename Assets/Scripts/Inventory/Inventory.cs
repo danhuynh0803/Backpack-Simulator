@@ -13,21 +13,16 @@ public class Inventory : MonoBehaviour {
         {
             instance = this;
         }
-        else
-        {
-            Debug.Log("Why are there two inventories?");
-            return;
-        }
     }
     #endregion
 
     public List<Item> itemList = new List<Item>(); 
     private InventoryUI inventoryUI;
-
+    
     private void Start()
     {
-        inventoryUI = InventoryUI.instance;
-        if (instance.inventoryUI == null)
+        inventoryUI = FindObjectOfType<InventoryUI>();
+        if (inventoryUI == null)
         {
             Debug.LogError("inventoryUI is null");
         }
@@ -92,13 +87,14 @@ public class Inventory : MonoBehaviour {
             {
                 AddItem(item);          
             }            
-        }      
+        }        
     }
 
     public void RemoveItem(int removeItemIndex)
     {
-        itemList.RemoveAt(removeItemIndex);
-        inventoryUI.UpdateInventoryUI(itemList);
+        itemList.RemoveAt(removeItemIndex);      
+        inventoryUI = FindObjectOfType<InventoryUI>();
+        inventoryUI.UpdateInventoryUI(itemList);        
     }
 
     public int GetTotalItems()

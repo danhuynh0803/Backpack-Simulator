@@ -52,15 +52,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Bandit
-  health: 9
+  maxHealth: 50
+  health: 50
   damage: 20
   armor: 0
   itemDropList:
-  - {fileID: 114249504169042712, guid: 541c622e7e073be4ca73847dcb8a2224, type: 2}
+  - {fileID: 114388840988385336, guid: b0bda7b1c4b50514e85a9f171a919a44, type: 2}
   - {fileID: 114951075248145476, guid: 7e20f41ef3467af4a9e5b4df43299613, type: 2}
   - {fileID: 114285165700791900, guid: 9f3a86bd36fdd7a4ba6ad0394d2be259, type: 2}
   - {fileID: 114388840988385336, guid: b2ecabe97b63ad74fa4d6f813fe26634, type: 2}
   - {fileID: 114388662822032692, guid: 1cceaf62227801146b647029048753e8, type: 2}
   - {fileID: 114388840988385336, guid: e0025c72eafe33f4a8ba2f94b65b67e5, type: 2}
   - {fileID: 114388840988385336, guid: a53072f71fcce15469d65500044e136d, type: 2}
+  - {fileID: 114249504169042712, guid: 541c622e7e073be4ca73847dcb8a2224, type: 2}
   dialogManager: {fileID: 0}
+  specialCooldownMax: 2

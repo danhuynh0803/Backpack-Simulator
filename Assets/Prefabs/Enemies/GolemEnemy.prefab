@@ -52,16 +52,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Sand Golem
-  health: 15
+  maxHealth: 25
+  health: 25
   damage: 2
-  armor: 10
+  armor: 8
   itemDropList:
   - {fileID: 114388840988385336, guid: 96e5326a870a6dd4ca8dded16d7c7bf0, type: 2}
-  - {fileID: 114388840988385336, guid: 96e5326a870a6dd4ca8dded16d7c7bf0, type: 2}
+  - {fileID: 114648063813858984, guid: cc5b5b8816af584459830d87634ba5ad, type: 2}
   - {fileID: 114388840988385336, guid: eb056e6ff78925f4288a442823292176, type: 2}
   - {fileID: 114388840988385336, guid: b0bda7b1c4b50514e85a9f171a919a44, type: 2}
   - {fileID: 114681885517262028, guid: 78f5e07890607e848b731bdbc200b7c2, type: 2}
   - {fileID: 114681885517262028, guid: 78f5e07890607e848b731bdbc200b7c2, type: 2}
   - {fileID: 114285165700791900, guid: 76d9c8a531d45654aaa374546432e805, type: 2}
   - {fileID: 114951075248145476, guid: b79aef67fe90a214b9852c7e831ffb62, type: 2}
+  - {fileID: 114388840988385336, guid: 2a08261d306a97c489e5db04e9b64133, type: 2}
   dialogManager: {fileID: 0}

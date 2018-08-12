@@ -23,9 +23,10 @@ public class InventoryUI : MonoBehaviour {
     public Text itemDescriptionText;
     public Image itemDescriptionIcon;
     public GameObject inventorySlot;
+    public Scrollbar inventoryScrollBar;
     private Item selectedItem;
     private int selectedItemIndex;
-
+    
 	// Use this for initialization
 	void Start () {
         inventory = Inventory.instance;

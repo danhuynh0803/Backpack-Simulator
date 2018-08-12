@@ -5,19 +5,17 @@ using UnityEngine;
 
 public class Ghost : Enemy
 {
-
     public override void Attack()
     {
         Player player = FindObjectOfType<Player>();
         int damageDealt = player.DecrementHealth(damage - player.armor);
+        SoundController.Play((int)SFX.Ghost, 0.5f);
         string[] sentences =
         {
            "Ghost's turn",
            "Ghost deals " + damageDealt + " damage.",
         };
-        Dialog enemyTurn = new Dialog("enemy turn", sentences);
-        dialogManager.isInDialog = true;
-        dialogManager.StartDialog(enemyTurn);
+        dialogManager.PrintEnemyNextSentence(sentences);
     }
 
     public override void Death()

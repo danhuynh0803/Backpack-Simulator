@@ -52,6 +52,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Girlish Dress
-  description: '"For the Alliance" was inked in to the hemming.'
+  description: '"For the Alliance" was stitched in the lining.'
   weight: 3
   icon: {fileID: 21300058, guid: 9854522c700d4814d931230a83cc3fed, type: 3}

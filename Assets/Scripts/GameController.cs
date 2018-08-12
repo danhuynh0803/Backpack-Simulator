@@ -23,7 +23,7 @@ public class GameController : MonoBehaviour
     private Enemy enemy;
                         //Later use a function to set from button
     private bool isGameOver;
-    public float turnDelay; // Seconds before moving to next turn;
+    private float turnDelay = 1f; // Seconds before moving to next turn;
     private MenuController menuController;
     private DialogManager dialogManager;
     [Header("Battle canvases")]
@@ -33,6 +33,7 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
+        enemy = null;
         isInCombat = false;
         isGameOver = false;
         //player = Player.player;
@@ -45,6 +46,11 @@ public class GameController : MonoBehaviour
         }
 
         //SetupCombat(enemyObject);
+    }
+
+    public Enemy GetEnemyForUI()
+    {
+        return enemy;
     }
 
     public void SetupCombat(GameObject enemyObject)
@@ -64,7 +70,12 @@ public class GameController : MonoBehaviour
         {     
             // Display any entering dialog we feel we need
             // "Player is battling a <enemy_name>"
-
+            if(enemy.health <= 0)
+            {
+                menuController.ToggleBattleCanvas();
+                FindTreasure();
+                return;
+            }
             menuController.ToggleBattleCanvas();
             isInCombat = true;
             PrintStartComatText();
@@ -131,8 +142,9 @@ public class GameController : MonoBehaviour
     {
         string[] sentences =
         {
-            "========Start Combat========",
-            enemy.name + " health = " + enemy.health + "\tplayer health =" + player.GetHealth()
+            "=========Start Combat=========",
+            enemy.name + " health = " + enemy.health + "\tplayer health = " + player.GetHealth(),
+            "Good luck!"
         };
         Dialog startCombatDialog = new Dialog("start combat", sentences);
         dialogManager.StartDialog(startCombatDialog);
@@ -143,14 +155,21 @@ public class GameController : MonoBehaviour
 
     void PrintEndCombatText()
     {
+        string dropList = "";
+        foreach(Item item in enemy.itemDropList)
+        {
+            dropList += "Obtain " + item.name + " x1"+ "\n";
+        }
         string[] sentences =
         {
-            "========End Combat========",
+            "=========End Combat=========",
+            dropList,
             "\n" + "Please circle your next destination on the map."
         };
         Dialog endCombatDialog = new Dialog("end combat", sentences);
         dialogManager.StartDialog(endCombatDialog);
         dialogManager.isInDialog = true;
+        dialogManager.ContinueToNextSentence();
         StartCoroutine(WaitUntilDialogIsOver("end combat"));
     }
 
@@ -158,7 +177,7 @@ public class GameController : MonoBehaviour
     {
         string[] sentences =
         {
-            "=====Player Death=====",
+            "=========Player Death=========",
         };
         Dialog deathCombatDialog = new Dialog("end combat", sentences);
         dialogManager.StartDialog(deathCombatDialog);
@@ -167,7 +186,31 @@ public class GameController : MonoBehaviour
 
     void AddDropItemToPlayer()
     {
+        FindObjectOfType<InventoryUI>().inventoryScrollBar.value = 0;
         Inventory.instance.AddItems(enemy.itemDropList);
+        FindObjectOfType<InventoryUI>().inventoryScrollBar.value = 0;
+        enemy = null;
+    }
+
+    public void FindTreasure()
+    {
+        string dropList = "";
+        foreach (Item item in enemy.itemDropList)
+        {
+            dropList += "Obtain " + item.name + " x1" + "\n";
+        }
+        string[] sentences =
+        {
+            "==========Found Treasure=========",
+            "Oh wow... more treasure....... or just more junk." + "\n",
+            dropList,
+            "\n" + "Please circle your next destination on the map."
+        };
+        Dialog findTreasureDialog = new Dialog("find treasure", sentences);
+        dialogManager.StartDialog(findTreasureDialog);
+        dialogManager.isInDialog = true;        
+        AddDropItemToPlayer();
+        dialogManager.ContinueToNextSentence();
     }
 
     public void EndCombat()
@@ -177,12 +220,12 @@ public class GameController : MonoBehaviour
             enemy.Death();
             PrintEndCombatText();
             isInCombat = false;
+            // reset so that the enemy status panel disappears after combat  
         }
         else // player health reached zero so end game
         {
             GameOver();
         }
-
         isInCombat = false;     
     }
 
@@ -191,4 +234,8 @@ public class GameController : MonoBehaviour
         PrintDeathCombatText();
     }
 
+    public void Restart()
+    {
+        menuController.LoadScene("OverworldMerge");
+    }
 }

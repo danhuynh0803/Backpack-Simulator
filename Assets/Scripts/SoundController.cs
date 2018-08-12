@@ -7,6 +7,14 @@ public enum SFX
 {
     Attack,
     Defend,
+    Backpack,
+    Potion,
+    StoneGolem,
+    Ghost,
+    Wyvern,
+    Spider,
+    Siren,
+    Dragon
     // Add more as we go
 };
 

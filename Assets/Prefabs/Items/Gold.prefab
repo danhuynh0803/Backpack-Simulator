@@ -54,5 +54,5 @@ MonoBehaviour:
   name: Gold Ore
   description: Gold assassinated platinum to be chosen currency of the world and paid
     people off in... gold.
-  weight: 2
+  weight: 4
   icon: {fileID: 21300014, guid: 2c02e90151cf4c5449c139bed9ee4b58, type: 3}

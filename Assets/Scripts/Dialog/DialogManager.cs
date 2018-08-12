@@ -5,13 +5,14 @@ using UnityEngine.UI;
 
 public class DialogManager : MonoBehaviour {
 
-    public float typingSpeed;
+    private float typingSpeed = 0.01f;
     public string[] exampleDialog;
     public Text textGameObject;
     public Scrollbar scrollbar;
     public Button nextButton;
     Queue<string> dialogSentences;
     private bool isPrintingText;
+    private bool isReadyForNewDialog;
     public bool isInDialog;
     private string printingSentece;
 
@@ -39,7 +40,6 @@ public class DialogManager : MonoBehaviour {
                 textGameObject.text += letter;
             printingSentece = printingSentece.Substring(1);
             scrollbar.value = 0f;
-            //dont know why i have to set it to backward lol
             yield return new WaitForSeconds(typingSpeed);
         }
         isPrintingText = false;
@@ -69,6 +69,7 @@ public class DialogManager : MonoBehaviour {
     {
         dialogSentences.Clear();
         isInDialog = true;
+        isReadyForNewDialog = false;
         nextButton.interactable = true;
         foreach (string sentence in dialog.sentences)
         {
@@ -83,8 +84,26 @@ public class DialogManager : MonoBehaviour {
         if (dialogSentences.Count == 0)
         {
             if (GameController.instance.isInCombat)
-                EndDialog();
-            return;
+            {
+                
+                if(isReadyForNewDialog ==true)
+                {
+                    //run after we click the next after last setence
+                    isInDialog = false;
+                    return;
+                }
+                else
+                {
+                    //run automatically after last sentence
+                    EndDialog();
+                    return;
+                }
+            }
+            else
+            {
+                isInDialog = false;
+                return;
+            }
         }
         string sentence = dialogSentences.Dequeue();
         PrintTextInDialogBox(sentence);
@@ -95,11 +114,19 @@ public class DialogManager : MonoBehaviour {
         textGameObject.text += "\n";
         textGameObject.text.Replace("\n", System.Environment.NewLine);
         nextButton.interactable = true;
-        isInDialog = false;
+        isReadyForNewDialog = true;
     }
     private void Awake()
     {
         dialogSentences = new Queue<string>();
+    }
+
+    public void PrintEnemyNextSentence(string[] sentences)
+    {
+        Dialog playerTurn = new Dialog("enemy turn", sentences);
+        isInDialog = true;
+        StartDialog(playerTurn);
+        ContinueToNextSentence();
     }
 }
 [System.Serializable]
@@ -123,4 +150,5 @@ public class Dialog
         name = "player";
         sentences = new string[1] { combatText };  
     }
+
 }

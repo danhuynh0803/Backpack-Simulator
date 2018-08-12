@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Barrel
   description: Once filled with loot, its now filled with failed dreams and termites.
-  weight: 3
+  weight: 5
   icon: {fileID: 21300176, guid: 9854522c700d4814d931230a83cc3fed, type: 3}

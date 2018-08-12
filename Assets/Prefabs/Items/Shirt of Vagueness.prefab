@@ -52,6 +52,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Shirt of Vagueness
-  description: This might be an Easter Egg, it might not be.
+  description: Is this or is this not a reference?
   weight: 3
   icon: {fileID: 21300112, guid: 9854522c700d4814d931230a83cc3fed, type: 3}

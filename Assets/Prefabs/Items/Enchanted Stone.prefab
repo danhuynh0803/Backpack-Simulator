@@ -52,7 +52,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Enchanted Gemstone
-  description: Seems to have a crush on you. +5 Elemental damage.
+  description: Can be cracked open to apply mythical liquid to your weapon. +5 Elemental
+    Damage.
   weight: 3
   icon: {fileID: 21300148, guid: 9854522c700d4814d931230a83cc3fed, type: 3}
   elemental: 5

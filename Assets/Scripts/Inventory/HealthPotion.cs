@@ -12,6 +12,7 @@ public class HealthPotion : Item {
         if (player.GetHealth() < player.maxHealth)
         {
             FindObjectOfType<Player>().IncrementHealth(healAmount);
+            SoundController.Play((int)SFX.Potion, 0.5f);
             return true;
         }
         else

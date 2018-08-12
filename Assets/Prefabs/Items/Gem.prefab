@@ -52,8 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Gem
-  description: A diamond can be identified by breathing on it, since diamonds are
-    such a potent heat conductor, the fog will dissipate instantly - too bad you can't
-    breath.
+  description: A diamond can be identified by the build up of fog when breathing on
+    it, too bad you don't breath.
   weight: 3
   icon: {fileID: 21300028, guid: 2c02e90151cf4c5449c139bed9ee4b58, type: 3}

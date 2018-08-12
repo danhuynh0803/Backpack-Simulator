@@ -55,5 +55,5 @@ MonoBehaviour:
   description: A good potion for defense but weighs a lot from all the mercury in
     it. +4 Armor.
   weight: 15
-  icon: {fileID: 0}
+  icon: {fileID: 21300146, guid: 09802840fc1be9840b4a4703d1c8d13d, type: 3}
   armor: 4

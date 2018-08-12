@@ -46,16 +46,24 @@ public class MenuController : MonoBehaviour
                 GameObject frontMenu = menuStack.Peek();
                 frontMenu.SetActive(false);
                 menuStack.Pop();
+                if (isGameMenu)
+                    isPaused = false;
             }
             // If only the pause menu is open, this allows players to exit by clicking escape
             else if (menuStack.Count == 0 && isPaused)
             {
-                isPaused = false;
+                if (isGameMenu)
+                    isPaused = false;
             }
             // Opens the pause menu using escape
             else if (menuStack.Count == 0 && !isPaused)
             {
-                isPaused = true;
+                if(isGameMenu)
+                {
+                    isPaused = true;
+                    pauseMenu.SetActive(true);
+                    menuStack.Push(pauseMenu);
+                }
             }
         }
 
@@ -66,7 +74,7 @@ public class MenuController : MonoBehaviour
         //loadingScreen.SetActive(true);
         //SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
         isPaused = false;
-        StartCoroutine(ChangeScene("MainMenu"));
+        StartCoroutine(ChangeScene("Menu"));
         //SoundController.Play((int)SFX.Load);
     }
 
@@ -104,8 +112,9 @@ public class MenuController : MonoBehaviour
         if (pauseMenu != null)
         {
             isPaused = false;
-            Time.timeScale = 1.0f;
+            //Time.timeScale = 1.0f;
             pauseMenu.SetActive(false);
+            menuStack.Pop();
         }
     }
 
@@ -114,7 +123,7 @@ public class MenuController : MonoBehaviour
         if (!GameController.instance.isInCombat)
         {
             isBattleCanvasOpen = !isBattleCanvasOpen;
-
+            SoundController.Play((int)SFX.Backpack, 0.3f);
             if (isBattleCanvasOpen)
             {
                 battleCanvas.SetActive(true);

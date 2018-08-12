@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Wyvern
+  maxHealth: 15
   health: 15
   damage: 5
   armor: 4
@@ -61,6 +62,8 @@ MonoBehaviour:
   - {fileID: 114388840988385336, guid: ca7132426e1b6fe4d854eb514180695d, type: 2}
   - {fileID: 114951075248145476, guid: 7e20f41ef3467af4a9e5b4df43299613, type: 2}
   - {fileID: 114388840988385336, guid: f4efab7071e07df4fac0a08e27aad924, type: 2}
-  - {fileID: 114388840988385336, guid: f52a5ed758d5147479b5a0ae6b589986, type: 2}
+  - {fileID: 114388840988385336, guid: d269d544728f78345bcf2ef4bb6cf08e, type: 2}
   - {fileID: 114285165700791900, guid: 9f3a86bd36fdd7a4ba6ad0394d2be259, type: 2}
+  - {fileID: 114648063813858984, guid: 3f67dc4089586d644a85d8d6081beee9, type: 2}
+  - {fileID: 114388840988385336, guid: a496c1d9adc088f4f98d662a35492264, type: 2}
   dialogManager: {fileID: 0}

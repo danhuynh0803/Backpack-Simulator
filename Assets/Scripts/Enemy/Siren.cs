@@ -8,15 +8,14 @@ public class Siren : Enemy {
     public override void Attack()
     {
         Player player = FindObjectOfType<Player>();
+        SoundController.Play((int)SFX.Siren, 0.5f);
         int damageDealt = player.DecrementHealth(damage - player.armor);
         string[] sentences =
             {
                 "Siren's turn",
                 "Siren deals " + damageDealt + " damage.",
             };
-        Dialog enemyTurn = new Dialog("enemy turn", sentences);
-        dialogManager.isInDialog = true;
-        dialogManager.StartDialog(enemyTurn);
+        dialogManager.PrintEnemyNextSentence(sentences);
     }
 
     public override void Death()

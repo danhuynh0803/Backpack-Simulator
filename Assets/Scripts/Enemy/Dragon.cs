@@ -8,6 +8,7 @@ public class Dragon : Enemy {
     public override void Attack()
     {
         Player player = FindObjectOfType<Player>();
+        SoundController.Play((int)SFX.Dragon, 0.5f);
         int damageDealt = player.DecrementHealth(damage - player.armor);
         string[] sentences =
             {
@@ -15,9 +16,7 @@ public class Dragon : Enemy {
                 "Dragon deals " + damageDealt + " damage.",
                 "Rawrrrrrrrrrrr"
             };
-        Dialog enemyTurn = new Dialog("enemy turn", sentences);
-        dialogManager.isInDialog = true;
-        dialogManager.StartDialog(enemyTurn);
+        dialogManager.PrintEnemyNextSentence(sentences);
     }
 
     public override void Death()

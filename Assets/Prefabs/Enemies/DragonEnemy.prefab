@@ -52,8 +52,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Dragon
+  maxHealth: 40
   health: 40
   damage: 6
   armor: 7
-  itemDropList: []
+  itemDropList:
+  - {fileID: 114648063813858984, guid: 09e61ed1b51614c4f9e5d5fc4edd2d20, type: 2}
+  - {fileID: 114648063813858984, guid: 74a776db9424f8149a31a86fdfeb9807, type: 2}
   dialogManager: {fileID: 0}
