@@ -7,8 +7,9 @@ public class ElementalPotion : Item {
 
     public int elemental;
 
-    public override void ActivateEffect()
+    public override bool ActivateEffect()
     {
-        FindObjectOfType<Player>().IncrementElemental(elemental);      
+        FindObjectOfType<Player>().IncrementElemental(elemental);
+        return true;
     }
 }

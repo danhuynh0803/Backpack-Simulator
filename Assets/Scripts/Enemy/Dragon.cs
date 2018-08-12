@@ -7,9 +7,17 @@ public class Dragon : Enemy {
 
     public override void Attack()
     {
-        Debug.Log("Enemy Attack");
         Player player = FindObjectOfType<Player>();
-        player.DecrementHealth(damage - player.armor);
+        int damageDealt = player.DecrementHealth(damage - player.armor);
+        string[] sentences =
+            {
+                "Dragon's turn",
+                "Dragon deals " + damageDealt + " damage.",
+                "Rawrrrrrrrrrrr"
+            };
+        Dialog enemyTurn = new Dialog("enemy turn", sentences);
+        dialogManager.isInDialog = true;
+        dialogManager.StartDialog(enemyTurn);
     }
 
     public override void Death()

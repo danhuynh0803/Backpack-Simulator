@@ -5,26 +5,32 @@ using UnityEngine;
 
 public enum SFX
 {
-    // TODO
-}
+    Attack,
+    Defend,
+    // Add more as we go
+};
 
 public class SoundController : MonoBehaviour
 {
     public AudioClip[] clips;                // Make sure clips are ordered in the same as the enum
     public static AudioSource[] sources;
-    public static float masterVolume;
-    public static float bgmVolume;
-    public static float sfxVolume;
+    public static float masterVolume = 1.0f;
+    public static float bgmVolume = 1.0f;
+    public static float sfxVolume = 1.0f;
 
+    /*
     public Slider masterVolumeSlider;
     public Slider bgmVolumeSlider;
     public Slider sfxVolumeSlider;
+    */
 
     void Start()
     {
+        /*
         masterVolumeSlider.onValueChanged.AddListener(delegate { OnMasterVolumeValueChanged(); });
         bgmVolumeSlider.onValueChanged.AddListener(delegate { OnBGMVolumeValueChanged(); });
         sfxVolumeSlider.onValueChanged.AddListener(delegate { OnSFXVolumeValueChanged(); });
+        */
 
         // Set up sfx audio
         sources = new AudioSource[clips.Length];
@@ -45,9 +51,11 @@ public class SoundController : MonoBehaviour
 
     void Update()
     {
+        /*
         masterVolume = masterVolumeSlider.value;
         bgmVolume = bgmVolumeSlider.value;
         sfxVolume = sfxVolumeSlider.value;
+        */
     }
 
     public static void Play(int soundIndex)
@@ -75,6 +83,7 @@ public class SoundController : MonoBehaviour
     }
 
     // Refactor to use these functions without using attached sliders maybe?
+    /*
     public void OnMasterVolumeValueChanged()
     {
         masterVolume = masterVolumeSlider.value;
@@ -89,4 +98,5 @@ public class SoundController : MonoBehaviour
     {
         sfxVolume = sfxVolumeSlider.value;
     }
+    */
 }

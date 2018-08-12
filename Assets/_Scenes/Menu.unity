@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074002, b: 0.3587271, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1555,7 +1555,8 @@ MonoBehaviour:
     Logo was made from https://textcraft.net/
 
     Music: Main Theme "Woods" from Axton Crolley at freevideogamemusic@gmail.com,
-    Ambient Music from a variety of sources including Kingdom (birds, etc),  '
+    Ambient Music from a variety of sources including Kingdom (birds, etc),  ghost
+    audio modified from Richard Culver, paper crumpling modified from jammaj'
 --- !u!222 &755315366
 CanvasRenderer:
   m_ObjectHideFlags: 0

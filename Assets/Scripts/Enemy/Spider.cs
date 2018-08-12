@@ -7,14 +7,35 @@ public class Spider : Enemy {
 
     public override void Attack()
     {
-        Debug.Log("Enemy Attack");
+
+        
+
         Player player = FindObjectOfType<Player>();
-        player.DecrementHealth(damage - player.armor);
+        int damageDealt = player.DecrementHealth(damage - player.armor);
         float rate = UnityEngine.Random.Range(0.0f, 5.0f);
         if (rate > 3.0f)
         {
             player.isPoisoned = true;
-            Debug.Log("Player got poisoned");
+            string[] sentences =
+            {
+                "Spider's turn",
+                "Spider deals " + damageDealt + " damage.",
+                "Player got poisoned!"
+            };
+            Dialog enemyTurn = new Dialog("enemy turn", sentences);
+            dialogManager.isInDialog = true;
+            dialogManager.StartDialog(enemyTurn);
+        }
+        else
+        {
+            string[] sentences =
+            {
+                "Spider's turn",
+                "Spider deals " + damageDealt + " damage.",
+            };
+            Dialog enemyTurn = new Dialog("enemy turn", sentences);
+            dialogManager.isInDialog = true;
+            dialogManager.StartDialog(enemyTurn);
         }
     }
 

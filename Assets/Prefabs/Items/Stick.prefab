@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Stick
   description: Can also be described as a defective boomerang.
-  weight: 0
+  weight: 2
   icon: {fileID: 21300158, guid: 09802840fc1be9840b4a4703d1c8d13d, type: 3}

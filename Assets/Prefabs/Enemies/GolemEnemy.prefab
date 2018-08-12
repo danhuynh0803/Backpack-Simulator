@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1849486433065812}
+  m_IsPrefabParent: 1
+--- !u!1 &1849486433065812
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4215475249016130}
+  - component: {fileID: 114405812248932418}
+  m_Layer: 0
+  m_Name: GolemEnemy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4215475249016130
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1849486433065812}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 321.72827, y: 166.97159, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114405812248932418
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1849486433065812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3689ad739179984cac43b13fd0ef1fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Sand Golem
+  health: 15
+  damage: 2
+  armor: 10
+  itemDropList:
+  - {fileID: 114388840988385336, guid: 96e5326a870a6dd4ca8dded16d7c7bf0, type: 2}
+  - {fileID: 114388840988385336, guid: 96e5326a870a6dd4ca8dded16d7c7bf0, type: 2}
+  - {fileID: 114388840988385336, guid: eb056e6ff78925f4288a442823292176, type: 2}
+  - {fileID: 114388840988385336, guid: b0bda7b1c4b50514e85a9f171a919a44, type: 2}
+  - {fileID: 114681885517262028, guid: 78f5e07890607e848b731bdbc200b7c2, type: 2}
+  - {fileID: 114681885517262028, guid: 78f5e07890607e848b731bdbc200b7c2, type: 2}
+  - {fileID: 114285165700791900, guid: 76d9c8a531d45654aaa374546432e805, type: 2}
+  - {fileID: 114951075248145476, guid: b79aef67fe90a214b9852c7e831ffb62, type: 2}
+  dialogManager: {fileID: 0}

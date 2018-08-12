@@ -29,8 +29,11 @@ public class GameController : MonoBehaviour
     [Header("Battle canvases")]
     public GameObject battleCanvas;
 
+    public bool isInCombat;
+
     private void Start()
     {
+        isInCombat = false;
         isGameOver = false;
         //player = Player.player;
         player = FindObjectOfType<Player>();
@@ -58,11 +61,12 @@ public class GameController : MonoBehaviour
         enemy = newEnemy;
 
         if (enemy != null)
-        {
+        {     
             // Display any entering dialog we feel we need
             // "Player is battling a <enemy_name>"
 
             menuController.ToggleBattleCanvas();
+            isInCombat = true;
             PrintStartComatText();
         }
         else
@@ -128,11 +132,12 @@ public class GameController : MonoBehaviour
         string[] sentences =
         {
             "========Start Combat========",
-            enemy.name + " health =" + enemy.health + "\tplayer health =" + player.GetHealth()
+            enemy.name + " health = " + enemy.health + "\tplayer health =" + player.GetHealth()
         };
         Dialog startCombatDialog = new Dialog("start combat", sentences);
         dialogManager.StartDialog(startCombatDialog);
         dialogManager.isInDialog = true;
+        dialogManager.ContinueToNextSentence();
         StartCoroutine(WaitUntilDialogIsOver("start combat"));
     }
 
@@ -141,6 +146,7 @@ public class GameController : MonoBehaviour
         string[] sentences =
         {
             "========End Combat========",
+            "\n" + "Please circle your next destination on the map."
         };
         Dialog endCombatDialog = new Dialog("end combat", sentences);
         dialogManager.StartDialog(endCombatDialog);
@@ -170,11 +176,14 @@ public class GameController : MonoBehaviour
         {
             enemy.Death();
             PrintEndCombatText();
+            isInCombat = false;
         }
         else // player health reached zero so end game
         {
             GameOver();
-        }        
+        }
+
+        isInCombat = false;     
     }
 
     private void GameOver()

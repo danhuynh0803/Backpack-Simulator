@@ -52,6 +52,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Rare Herbs
-  description: Paired well with rare salmon and a glass of rare red wine.
+  description: Pairs well with rare salmon and a glass of rare red wine.
   weight: 1
   icon: {fileID: 21300268, guid: 9854522c700d4814d931230a83cc3fed, type: 3}

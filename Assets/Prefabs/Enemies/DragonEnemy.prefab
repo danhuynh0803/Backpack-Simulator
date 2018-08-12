@@ -54,6 +54,6 @@ MonoBehaviour:
   name: Dragon
   health: 40
   damage: 6
-  armor: 0
+  armor: 7
   itemDropList: []
   dialogManager: {fileID: 0}

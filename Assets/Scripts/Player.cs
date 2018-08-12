@@ -54,15 +54,20 @@ public class Player : MonoBehaviour {
         int damageDealt;
         if (isEncumbered)
         {
-            damageDealt = damage + elementalDamage - enemy.armor - 5;
+            damageDealt = Mathf.Clamp(damage + elementalDamage - enemy.armor - 5, 0, 99999);
         }
         else
-        if(enemy.name == "Ghost")
+        if (enemy.name == "Ghost")
         {
-            damageDealt = elementalDamage - enemy.armor;
+            damageDealt = Mathf.Clamp(elementalDamage - enemy.armor, 0, 99999);
         }
         else
-            damageDealt = damage + elementalDamage - enemy.armor;
+        if (enemy.name == "Dragon")
+        {
+            damageDealt = Mathf.Clamp(damage + elementalDamage * 2 - enemy.armor, 0, 99999);
+        }
+        else
+            damageDealt = Mathf.Clamp(damage + elementalDamage - enemy.armor, 0, 99999);
         if (damageDealt > 0)
         {
             // Play a damage sound
@@ -72,17 +77,33 @@ public class Player : MonoBehaviour {
             // Play a block sound
         }
         enemy.health -= damageDealt;
-        string[] sentences =
+        if (enemy.name == "Sand Golem" && damageDealt > 0)
         {
-           "Player's turn",
-           "Player deals " + damageDealt + " damage.",
-           CheckEnemyHealth(enemy.health, enemy)
-        };
-        Dialog playerTurn = new Dialog("enemy turn", sentences);
-        dialogManager.isInDialog = true;
-        dialogManager.StartDialog(playerTurn);
+            string[] sentences =
+            {
+                "Player's turn",
+                "Player deals " + damageDealt + " damage.",
+                CheckEnemyHealth(enemy.health, enemy),
+                "Obtain an iron ore!"
+            };
+            Dialog playerTurn = new Dialog("enemy turn", sentences);
+            Inventory.instance.AddItem(enemy.itemDropList[0]);
+            dialogManager.isInDialog = true;
+            dialogManager.StartDialog(playerTurn);
+        }
+        else
+        {
+            string[] sentences =
+            {
+                "Player's turn",
+                "Player deals " + damageDealt + " damage.",
+                CheckEnemyHealth(enemy.health, enemy)
+            };
+            Dialog playerTurn = new Dialog("enemy turn", sentences);
+            dialogManager.isInDialog = true;
+            dialogManager.StartDialog(playerTurn);
+        }
     }
-
     public string CheckEnemyHealth(int enemyHealth, Enemy enemy)
     {
         if (enemyHealth <= 0)
@@ -94,6 +115,7 @@ public class Player : MonoBehaviour {
     {
         inventory.AddItems(droppedItems);
     }
+
 
     public int GetHealth()
     {
@@ -117,15 +139,31 @@ public class Player : MonoBehaviour {
 
     public void IncrementHealth(int recovery)
     {
-        Mathf.Clamp((health += recovery), 0, maxHealth);
+        health = Mathf.Clamp((health + recovery), 0, maxHealth);
     }
 
-    public void DecrementHealth(int damage)
+    public int DecrementHealth(int damage)
     {
-        Mathf.Clamp((health -= damage - armor), 0, maxHealth);
+        int totalDamage = Mathf.Clamp((damage - armor), 0, 99999);
+        health = Mathf.Clamp((health - damage - armor), 0, maxHealth);
         if (isPoisoned)
         {
-            Mathf.Clamp((health -= 2), 0, maxHealth);
+            health = Mathf.Clamp((health - 2), 0, maxHealth);
+            return totalDamage + 2;
         }
+        return totalDamage;
+    }
+
+    public int GetWeight()
+    {
+        int totalWeight = 0;
+        foreach (Item item in Inventory.instance.itemList)
+        {
+            if (item != null)
+            {
+                totalWeight += item.weight;
+            }
+        }
+        return totalWeight;
     }
 }

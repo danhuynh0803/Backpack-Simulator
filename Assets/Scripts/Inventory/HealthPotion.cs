@@ -6,9 +6,19 @@ public class HealthPotion : Item {
 
     public int healAmount;
     
-    public override void ActivateEffect()
+    public override bool ActivateEffect()
     {
-        FindObjectOfType<Player>().IncrementHealth(healAmount);
+        Player player = FindObjectOfType<Player>();
+        if (player.GetHealth() < player.maxHealth)
+        {
+            FindObjectOfType<Player>().IncrementHealth(healAmount);
+            return true;
+        }
+        else
+        {
+            Debug.Log("Player is already at max health");
+            return false;
+        }
     }
     
 }

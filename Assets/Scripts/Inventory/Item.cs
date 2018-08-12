@@ -10,12 +10,9 @@ public abstract class Item : MonoBehaviour {
     public int weight;
     public Sprite icon;
 
-    public void WriteDescription()
-    {
-        
-    }
-
     // Provides some form of effect
-    public abstract void ActivateEffect();
+    // return true if its a consumable and will disappear upon use
+    // else return false to not have it disappear from list upon use
+    public abstract bool ActivateEffect();
         
 }

@@ -17,75 +17,84 @@ public class DialogManager : MonoBehaviour {
 
     public void PrintTextInDialogBox(string sentence)
     {
+        nextButton.interactable = false;
         isPrintingText = true;
-        scrollbar.interactable = false;
         StartCoroutine(Type(sentence));
     }
 
     IEnumerator Type(string sentence)
     {
         printingSentece = sentence;
-        textGameObject.text += "\n\n";
-        textGameObject.text.Replace("\n", System.Environment.NewLine);
+        textGameObject.text += "\n";
         // Print each character one by one
         foreach (char letter in sentence)
         {
-            textGameObject.text += letter;
+            if (System.Char.IsNumber(letter))
+            { 
+                textGameObject.text += "<color=#ff0000ff>";
+                textGameObject.text += letter;
+                textGameObject.text += "</color>";
+            }
+            else
+                textGameObject.text += letter;
             printingSentece = printingSentece.Substring(1);
             scrollbar.value = 0f;
             //dont know why i have to set it to backward lol
             yield return new WaitForSeconds(typingSpeed);
         }
         isPrintingText = false;
-        scrollbar.interactable = true;
+        ContinueToNextSentence();
     }
 
-    IEnumerator PrintCurrentSentenceImmediately()
+    /*IEnumerator PrintCurrentSentenceImmediately()
     {
         foreach (char letter in printingSentece)
         {
-            textGameObject.text += letter;
+            if (System.Char.IsNumber(letter))
+            {
+                textGameObject.text += "<color=#ff0000ff>";
+                textGameObject.text += letter;
+                textGameObject.text += "</color>";
+            }
+            else
+                textGameObject.text += letter;
             yield return new WaitForSeconds(0.01f);
             scrollbar.value = 0f;
         }
         nextButton.interactable = true;
         isPrintingText = false;
-    }
+    }*/
 
     public void StartDialog(Dialog dialog)
     {
         dialogSentences.Clear();
         isInDialog = true;
+        nextButton.interactable = true;
         foreach (string sentence in dialog.sentences)
         {
             dialogSentences.Enqueue(sentence);
         }
-        ContinueToNextSentence();
+        //super printing text mode
+        //ContinueToNextSentence();
     }
 
     public void ContinueToNextSentence()
     {
-        if (isPrintingText)
+        if (dialogSentences.Count == 0)
         {
-            StopAllCoroutines();
-            StartCoroutine(PrintCurrentSentenceImmediately());
-            scrollbar.interactable = true;
-            nextButton.interactable = false;
-        }
-        else
-        {
-            if (dialogSentences.Count == 0)
-            {
+            if (GameController.instance.isInCombat)
                 EndDialog();
-                return;
-            }
-            string sentence = dialogSentences.Dequeue();
-            PrintTextInDialogBox(sentence);
+            return;
         }
+        string sentence = dialogSentences.Dequeue();
+        PrintTextInDialogBox(sentence);
     }
 
     void EndDialog()
     {
+        textGameObject.text += "\n";
+        textGameObject.text.Replace("\n", System.Environment.NewLine);
+        nextButton.interactable = true;
         isInDialog = false;
     }
     private void Awake()

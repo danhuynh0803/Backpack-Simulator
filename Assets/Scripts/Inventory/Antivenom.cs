@@ -5,10 +5,11 @@ using UnityEngine;
 public class Antivenom : Item {
 
     
-    public override void ActivateEffect()
+    public override bool ActivateEffect()
     {
         Player player = FindObjectOfType<Player>();
         player.isPoisoned = false;
         Debug.Log("Player is cured");
+        return true;
     }
 }

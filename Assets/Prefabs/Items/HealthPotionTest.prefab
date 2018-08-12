@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Health Potion
-  description: Pretty self-evident what it does.
+  description: Pretty self-evident what it does. +10 Health
   weight: 5
   icon: {fileID: 21300002, guid: 09802840fc1be9840b4a4703d1c8d13d, type: 3}
   healAmount: 10

@@ -52,6 +52,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Cursed Item
-  description: This item cannot be thrown away.
+  description: The subject of many YouTube videoes.
   weight: 3
   icon: {fileID: 21300262, guid: 9854522c700d4814d931230a83cc3fed, type: 3}

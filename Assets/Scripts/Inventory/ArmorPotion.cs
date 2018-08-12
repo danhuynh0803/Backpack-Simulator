@@ -7,8 +7,9 @@ public class ArmorPotion : Item {
 
     public int armor;
 
-    public override void ActivateEffect()
+    public override bool ActivateEffect()
     {
-        FindObjectOfType<Player>().IncrementArmor(armor);      
+        FindObjectOfType<Player>().IncrementArmor(armor);
+        return true;
     }
 }

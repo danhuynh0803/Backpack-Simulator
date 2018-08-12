@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4215475249016130}
-  - component: {fileID: 114538805447655552}
+  - component: {fileID: 114580957711415136}
   m_Layer: 0
   m_Name: Treasure
   m_TagString: Untagged
@@ -40,7 +40,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114538805447655552
+--- !u!114 &114580957711415136
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1849486433065812}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee465c06ee4d3a746bed937491f16f0f, type: 3}
+  m_Script: {fileID: 11500000, guid: 243ca1c82843ce54cb5a24cac43be85a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   name: Treasure
@@ -56,9 +56,14 @@ MonoBehaviour:
   damage: 0
   armor: 0
   itemDropList:
+  - {fileID: 114388840988385336, guid: fdc4d4a1afe7ec0479f97b23989de93f, type: 2}
+  - {fileID: 114249504169042712, guid: 541c622e7e073be4ca73847dcb8a2224, type: 2}
+  - {fileID: 114951075248145476, guid: 7e20f41ef3467af4a9e5b4df43299613, type: 2}
+  - {fileID: 114285165700791900, guid: cb97ad2cc16e2a24f864c34a6a20de20, type: 2}
+  - {fileID: 114388840988385336, guid: 12350c79042e999489af491164b18cea, type: 2}
+  - {fileID: 114388840988385336, guid: a496c1d9adc088f4f98d662a35492264, type: 2}
+  - {fileID: 114681885517262028, guid: 78f5e07890607e848b731bdbc200b7c2, type: 2}
   - {fileID: 114285165700791900, guid: 9f3a86bd36fdd7a4ba6ad0394d2be259, type: 2}
-  - {fileID: 114285165700791900, guid: f29a1bf645e0154489821325db206161, type: 2}
-  - {fileID: 114285165700791900, guid: 78f5e07890607e848b731bdbc200b7c2, type: 2}
-  - {fileID: 114285165700791900, guid: f29a1bf645e0154489821325db206161, type: 2}
-  - {fileID: 114285165700791900, guid: 9f3a86bd36fdd7a4ba6ad0394d2be259, type: 2}
+  - {fileID: 114388840988385336, guid: afa44566f9d7ac041b128c809e2025af, type: 2}
+  - {fileID: 114388840988385336, guid: 79ea154150504a447baaae8387872a37, type: 2}
   dialogManager: {fileID: 0}

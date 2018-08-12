@@ -9,8 +9,7 @@ public class Ghost : Enemy
     public override void Attack()
     {
         Player player = FindObjectOfType<Player>();
-        int damageDealt = damage - player.armor;
-        player.DecrementHealth(damage - player.armor);
+        int damageDealt = player.DecrementHealth(damage - player.armor);
         string[] sentences =
         {
            "Ghost's turn",

@@ -111,17 +111,20 @@ public class MenuController : MonoBehaviour
 
     public void ToggleBattleCanvas()
     {
-        isBattleCanvasOpen = !isBattleCanvasOpen;
+        if (!GameController.instance.isInCombat)
+        {
+            isBattleCanvasOpen = !isBattleCanvasOpen;
 
-        if (isBattleCanvasOpen)
-        {
-            battleCanvas.SetActive(true);
-            encountersCanvas.SetActive(false);
-        }
-        else
-        {
-            battleCanvas.SetActive(false);
-            encountersCanvas.SetActive(true);
+            if (isBattleCanvasOpen)
+            {
+                battleCanvas.SetActive(true);
+                encountersCanvas.SetActive(false);
+            }
+            else
+            {
+                battleCanvas.SetActive(false);
+                encountersCanvas.SetActive(true);
+            }
         }
     }
 

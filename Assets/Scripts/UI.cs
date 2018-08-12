@@ -8,10 +8,21 @@ using UnityEngine.UI;
 public class UI : MonoBehaviour {
 
     [Header("UI Settings")]
-    public Text scoreText;
-    public Text highScoreText;
-    public Text retryText;
-    public Text livesText;
+    public Text health;
+    public Text damage;
+    public Text armor;
+    public Text weight;
+    public Text playerStatuses;
+
+    public Slider healthSlider;
+
+    private Player player;
+
+    private void Start()
+    {
+        player = FindObjectOfType<Player>();
+        healthSlider.maxValue = player.maxHealth;
+    }
 
     void Update()
     {
@@ -20,16 +31,11 @@ public class UI : MonoBehaviour {
 
     public void UpdateAllText()
     {
-        UpdateLivesText();
+        health.text = player.GetHealth() + "/" + player.maxHealth;
+        healthSlider.value = player.GetHealth();
+        damage.text = "Attack: " + player.damage.ToString();
+        armor.text = "Armor: " + player.armor.ToString();
+        weight.text = "Total Weight: " + player.GetWeight();
     }
 
-    public void UpdateLivesText()
-    { 
-
-    }
-
-    public void UpdateScoresText()
-    {
-
-    }
 }

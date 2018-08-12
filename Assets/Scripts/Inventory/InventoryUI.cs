@@ -23,17 +23,41 @@ public class InventoryUI : MonoBehaviour {
     public Text itemDescriptionText;
     public Image itemDescriptionIcon;
     public GameObject inventorySlot;
+    private Item selectedItem;
+    private int selectedItemIndex;
 
 	// Use this for initialization
 	void Start () {
         inventory = Inventory.instance;
 	} 
 
-    public void SetItemDescription(Item item)
+    public void SetItemDescription(Item item, int slotIndex)
     {
+        selectedItem = item;
         itemName.text = item.name;
         itemDescriptionText.text = item.description;
         itemDescriptionIcon.sprite = item.icon;
+        selectedItemIndex = slotIndex;
+    }
+
+    public void UseItem()
+    {
+        if (selectedItem.ActivateEffect())
+        {
+            DropItem();
+            selectedItem = null;
+        }
+        else
+        {
+            Debug.Log("Item cannot be used");
+        }
+    }
+
+    public void DropItem()
+    {
+        inventory.RemoveItem(selectedItemIndex);
+        itemDescriptionPanel.SetActive(false);
+        selectedItem = null;
     }
     
 	// Update is called once per frame
@@ -66,6 +90,7 @@ public class InventoryUI : MonoBehaviour {
             {
                 //Debug.Log("Item name:" + item.name);
                 AddItemToUI(item, slotIndex);
+                slotIndex++;
             }
         }
     }

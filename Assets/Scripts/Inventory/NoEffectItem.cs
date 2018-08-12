@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class NoEffectItem : Item
 {
-    public override void ActivateEffect()
+    public override bool ActivateEffect()
     {
+        return false;
     }
 }

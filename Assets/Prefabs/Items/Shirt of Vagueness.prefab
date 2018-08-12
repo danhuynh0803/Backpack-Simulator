@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4778344024071280}
   - component: {fileID: 114388840988385336}
   m_Layer: 0
-  m_Name: Cotton
+  m_Name: Shirt of Vagueness
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5b5163bdc8bce4597f9d920cc9578b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Cotton
-  description: Why do they call it cotton when it doesn't weigh a ton?
-  weight: 0
-  icon: {fileID: 21300158, guid: 09802840fc1be9840b4a4703d1c8d13d, type: 3}
+  name: Shirt of Vagueness
+  description: This might be an Easter Egg, it might not be.
+  weight: 3
+  icon: {fileID: 21300112, guid: 9854522c700d4814d931230a83cc3fed, type: 3}

@@ -27,7 +27,7 @@ public class InventorySlot : MonoBehaviour {
         GameObject itemDescriptionPanel = FindObjectOfType<InventoryUI>().itemDescriptionPanel;
         itemDescriptionPanel.SetActive(true);
 
-        FindObjectOfType<InventoryUI>().SetItemDescription(this.item);
+        FindObjectOfType<InventoryUI>().SetItemDescription(this.item, itemSlotIndex);
     }
 
     public void ClickDeleteButton()

@@ -28,7 +28,7 @@ public class Overworld : MonoBehaviour {
         float rate2 = Random.Range(0.0f, 2.0f);
         float rate3 = Random.Range(0.0f, 2.0f);
         float rate4 = Random.Range(0.0f, 2.0f);
-        float rate5 = Random.Range(0.0f, 4.0f);
+        float rate5 = Random.Range(0.0f, 2.0f);
 
         if (rate > 2.0f)
         {
@@ -66,22 +66,22 @@ public class Overworld : MonoBehaviour {
         {
             mountainButton.SetActive(true);
         }
-        if (rate5 > 3.0f)
+        if (rate5 > 1.0f)
         {
             treasureButton.SetActive(true);
         }
-        else if (rate5 > 2.0f)
+        if (rate5 < 1.0f)
         {
             treasure2Button.SetActive(true);
         }
-        else if (rate5 > 1.0f)
+       /* else if (rate5 > 1.0f)
         {
             merchantButton.SetActive(true);
         }
         else if (rate5 > 0.0f)
         {
             merchant2Button.SetActive(true);
-        }
+        }*/
     }
     
     // Update is called once per frame
