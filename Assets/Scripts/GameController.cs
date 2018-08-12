@@ -19,13 +19,13 @@ public class GameController : MonoBehaviour
     #endregion
 
     private Player player;
-    public Enemy enemy; // make public for testing. 
+    public GameObject enemyObject; // make public for testing. 
+    private Enemy enemy;
                         //Later use a function to set from button
     private bool isGameOver;
     public float turnDelay; // Seconds before moving to next turn;
-    public bool isDialogFinished;
     private MenuController menuController;
-
+    private DialogManager dialogManager;
     [Header("Battle canvases")]
     public GameObject battleCanvas;
 
@@ -35,14 +35,21 @@ public class GameController : MonoBehaviour
         //player = Player.player;
         player = FindObjectOfType<Player>();
         menuController = FindObjectOfType<MenuController>();
-
+        dialogManager = FindObjectOfType<DialogManager>();
         if (player == null)
         {
             Debug.LogError("ERROR: No player instance was found");
         }
 
-        // testing combat
-        //EnterCombat(enemy);
+        //SetupCombat(enemyObject);
+    }
+
+    public void SetupCombat(GameObject enemyObject)
+    {
+        // Make a new reference to the Enemy script to avoid overwriting the values
+        GameObject newEnemyReference = Instantiate(enemyObject);
+        newEnemyReference.GetComponent<Enemy>().dialogManager = FindObjectOfType<DialogManager>();
+        EnterCombat(newEnemyReference.GetComponent<Enemy>());
     }
 
     public void EnterCombat(Enemy newEnemy)
@@ -56,7 +63,7 @@ public class GameController : MonoBehaviour
             // "Player is battling a <enemy_name>"
 
             menuController.ToggleBattleCanvas();
-            CombatLoop();
+            PrintStartComatText();
         }
         else
         {
@@ -64,8 +71,9 @@ public class GameController : MonoBehaviour
         }       
     }
 
+
     // Controls combat loop
-    public void CombatLoop()
+    IEnumerator CombatLoop()
     {
         if (enemy == null)
         {
@@ -74,37 +82,86 @@ public class GameController : MonoBehaviour
   
         int turnCount = 0;
 
-        Debug.Log("Enemy health=" + enemy.health + "\tplayer health=" + player.GetHealth());
-        while (enemy.health > 0 && player.GetHealth() > 0)
+        while (enemy.health > 0 && player.GetHealth() > 0 )
         {
-            if (isDialogFinished)
+            //StartDialog()
+            // Output to dialog the turn
+            if (turnCount % 2 == 0)
             {
-                //StartDialog()
-                // Output to dialog the turn
-                if (turnCount % 2 == 0)
-                {
-                    // Players turn                
-                    Debug.Log("Player's turn");
-                    player.Attack();
-                }
-                else
-                {
-                    // Enemy's turn
-                    Debug.Log("Enemy's turn");
-                    enemy.Attack();
-                }
-
-                turnCount++;
-                StartCoroutine(Wait(turnDelay));
+                // Players turn                
+                player.Attack(enemy);
             }
+            else
+            {
+                // Enemy's turn
+                enemy.Attack();
+            }
+            yield return new WaitUntil(() => dialogManager.isInDialog == false);
+            turnCount++;
         }
 
         EndCombat();
     }
-
+    
     IEnumerator Wait(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
+    }
+    IEnumerator WaitUntilDialogIsOver(string type)
+    {
+        yield return new WaitUntil(() => dialogManager.isInDialog == false);
+        switch(type)
+        {
+            case "start combat":
+                StartCoroutine(CombatLoop());
+                break;
+            case "end combat":
+                AddDropItemToPlayer();
+                break;
+            default:
+                break;
+        }
+    }
+
+    void PrintStartComatText()
+    {
+        string[] sentences =
+        {
+            "========Start Combat========",
+            enemy.name + " health =" + enemy.health + "\tplayer health =" + player.GetHealth()
+        };
+        Dialog startCombatDialog = new Dialog("start combat", sentences);
+        dialogManager.StartDialog(startCombatDialog);
+        dialogManager.isInDialog = true;
+        StartCoroutine(WaitUntilDialogIsOver("start combat"));
+    }
+
+    void PrintEndCombatText()
+    {
+        string[] sentences =
+        {
+            "========End Combat========",
+        };
+        Dialog endCombatDialog = new Dialog("end combat", sentences);
+        dialogManager.StartDialog(endCombatDialog);
+        dialogManager.isInDialog = true;
+        StartCoroutine(WaitUntilDialogIsOver("end combat"));
+    }
+
+    void PrintDeathCombatText()
+    {
+        string[] sentences =
+        {
+            "=====Player Death=====",
+        };
+        Dialog deathCombatDialog = new Dialog("end combat", sentences);
+        dialogManager.StartDialog(deathCombatDialog);
+        dialogManager.isInDialog = true;
+    }
+
+    void AddDropItemToPlayer()
+    {
+        Inventory.instance.AddItems(enemy.itemDropList);
     }
 
     public void EndCombat()
@@ -112,10 +169,7 @@ public class GameController : MonoBehaviour
         if (enemy.health <= 0)
         {
             enemy.Death();
-
-            Debug.Log("Player now has " + player.GetHealth() + " health remaining.");
-
-            Inventory.instance.AddItems(enemy.itemDropList);
+            PrintEndCombatText();
         }
         else // player health reached zero so end game
         {
@@ -125,7 +179,7 @@ public class GameController : MonoBehaviour
 
     private void GameOver()
     {
-
+        PrintDeathCombatText();
     }
 
 }

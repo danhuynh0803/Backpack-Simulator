@@ -9,7 +9,7 @@ public abstract class Enemy : MonoBehaviour{
     public int damage;
     public int armor;
     public List<Item> itemDropList = new List<Item>();
-
+    public DialogManager dialogManager;
     public abstract void Attack();
 
     public abstract void Death();

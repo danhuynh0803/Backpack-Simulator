@@ -19,9 +19,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4778344024071280}
-  - component: {fileID: 114681885517262028}
+  - component: {fileID: 114285165700791900}
   m_Layer: 0
-  m_Name: ArmorPotion
+  m_Name: Poison
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,7 +40,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114681885517262028
+--- !u!114 &114285165700791900
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -48,12 +48,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1819045569814546}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47a124c2ce54ced43ab4547b0d2f4ed5, type: 3}
+  m_Script: {fileID: 11500000, guid: 9fb6e9f9c8555de42ab9b3895249b0e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Ironhide Potion
-  description: A good potion for defense but weighs a lot from all the mercury in
-    it. +4 Armor.
-  weight: 15
-  icon: {fileID: 0}
-  armor: 4
+  name: Poison
+  description: Pretty self-evident what it does. Ad
+  weight: 5
+  icon: {fileID: 21300002, guid: 09802840fc1be9840b4a4703d1c8d13d, type: 3}
+  healAmount: 10

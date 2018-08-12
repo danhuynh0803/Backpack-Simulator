@@ -52,7 +52,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Tome of the Injured
-  description: Although you know of its unfathomable power, the Adventurer uses it
-    for toliet paper.
+  description: Contains unfathomable horrors, a classic textbook for a Lawyer.
   weight: 25
   icon: {fileID: 21300290, guid: 9854522c700d4814d931230a83cc3fed, type: 3}

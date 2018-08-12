@@ -20,8 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4215475249016130}
   - component: {fileID: 114538805447655552}
+  - component: {fileID: 114797367439414130}
   m_Layer: 0
-  m_Name: GhostEnemyTest
+  m_Name: SirenEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,14 +52,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee465c06ee4d3a746bed937491f16f0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Ghost
-  health: 6
+  name: Siren
+  health: 18
   damage: 2
   armor: 0
   itemDropList:
+  - {fileID: 114388840988385336, guid: e327d3550a3a0d94b91381b180e6b416, type: 2}
+  - {fileID: 114388840988385336, guid: e327d3550a3a0d94b91381b180e6b416, type: 2}
+  - {fileID: 114388840988385336, guid: 1122dbb44a6b4014daa4db722a9be21a, type: 2}
+  - {fileID: 114388840988385336, guid: 91f77bb603180234cb30b04a02b30d0e, type: 2}
   - {fileID: 114285165700791900, guid: 9f3a86bd36fdd7a4ba6ad0394d2be259, type: 2}
-  - {fileID: 114285165700791900, guid: f29a1bf645e0154489821325db206161, type: 2}
-  - {fileID: 114388840988385336, guid: 66d6544b6782e2a4ba443e66f391d721, type: 2}
-  - {fileID: 114285165700791900, guid: f29a1bf645e0154489821325db206161, type: 2}
-  - {fileID: 114285165700791900, guid: 9f3a86bd36fdd7a4ba6ad0394d2be259, type: 2}
+  - {fileID: 114388840988385336, guid: 96e5326a870a6dd4ca8dded16d7c7bf0, type: 2}
+  - {fileID: 114378295558346348, guid: f77f443a295fa384ba3d44a1fd4d54d4, type: 2}
+  dialogManager: {fileID: 0}
+--- !u!114 &114797367439414130
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1849486433065812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e00f4173f69ccff4c81a021f58c0b58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Siren
+  health: 18
+  damage: 2
+  armor: 0
+  itemDropList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   dialogManager: {fileID: 0}

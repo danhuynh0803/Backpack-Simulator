@@ -12,6 +12,7 @@ public class DialogManager : MonoBehaviour {
     public Button nextButton;
     Queue<string> dialogSentences;
     private bool isPrintingText;
+    public bool isInDialog;
     private string printingSentece;
 
     public void PrintTextInDialogBox(string sentence)
@@ -48,11 +49,13 @@ public class DialogManager : MonoBehaviour {
             scrollbar.value = 0f;
         }
         nextButton.interactable = true;
+        isPrintingText = false;
     }
 
-    void StartDialog(Dialog dialog)
+    public void StartDialog(Dialog dialog)
     {
         dialogSentences.Clear();
+        isInDialog = true;
         foreach (string sentence in dialog.sentences)
         {
             dialogSentences.Enqueue(sentence);
@@ -66,7 +69,6 @@ public class DialogManager : MonoBehaviour {
         {
             StopAllCoroutines();
             StartCoroutine(PrintCurrentSentenceImmediately());
-            isPrintingText = false;
             scrollbar.interactable = true;
             nextButton.interactable = false;
         }
@@ -84,19 +86,11 @@ public class DialogManager : MonoBehaviour {
 
     void EndDialog()
     {
-
+        isInDialog = false;
     }
-
-    void Start()
+    private void Awake()
     {
-        Dialog sample = new Dialog("example", exampleDialog);
         dialogSentences = new Queue<string>();
-        StartDialog(sample);
-    }
-
-    void SetupCombatDialog()
-    {
-
     }
 }
 [System.Serializable]

@@ -9,30 +9,30 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1819045569814546}
+  m_RootGameObject: {fileID: 1849486433065812}
   m_IsPrefabParent: 1
---- !u!1 &1819045569814546
+--- !u!1 &1849486433065812
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4778344024071280}
-  - component: {fileID: 114681885517262028}
+  - component: {fileID: 4215475249016130}
+  - component: {fileID: 114855028856066734}
   m_Layer: 0
-  m_Name: ArmorPotion
+  m_Name: SpiderEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4778344024071280
+--- !u!4 &4215475249016130
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1819045569814546}
+  m_GameObject: {fileID: 1849486433065812}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 321.72827, y: 166.97159, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -40,20 +40,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114681885517262028
+--- !u!114 &114855028856066734
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1819045569814546}
+  m_GameObject: {fileID: 1849486433065812}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47a124c2ce54ced43ab4547b0d2f4ed5, type: 3}
+  m_Script: {fileID: 11500000, guid: deb5b13d3f3b6014587ecadf6892db15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Ironhide Potion
-  description: A good potion for defense but weighs a lot from all the mercury in
-    it. +4 Armor.
-  weight: 15
-  icon: {fileID: 0}
-  armor: 4
+  name: Spider
+  health: 15
+  damage: 2
+  armor: 0
+  itemDropList:
+  - {fileID: 114388840988385336, guid: e0025c72eafe33f4a8ba2f94b65b67e5, type: 2}
+  - {fileID: 114388840988385336, guid: a15f17c3c7014bb43b81202fbe1b0d44, type: 2}
+  - {fileID: 114388840988385336, guid: a15f17c3c7014bb43b81202fbe1b0d44, type: 2}
+  - {fileID: 114388840988385336, guid: 79c66ccdfc77fca49b172a2f3f11ade7, type: 2}
+  - {fileID: 114388840988385336, guid: fd9dde8c17064c048a2f0b82f01d7926, type: 2}
+  - {fileID: 114388840988385336, guid: f52a5ed758d5147479b5a0ae6b589986, type: 2}
+  - {fileID: 114388840988385336, guid: ca7132426e1b6fe4d854eb514180695d, type: 2}
+  dialogManager: {fileID: 0}

@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArmorPotion : Item {
+public class ElementalPotion : Item {
 
-    public int armor;
+    public int elemental;
 
     public override void ActivateEffect()
     {
-        FindObjectOfType<Player>().IncrementArmor(armor);      
+        FindObjectOfType<Player>().IncrementElemental(elemental);      
     }
 }
