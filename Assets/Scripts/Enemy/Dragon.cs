@@ -9,7 +9,7 @@ public class Dragon : Enemy {
     {
         Player player = FindObjectOfType<Player>();
         SoundController.Play((int)SFX.Dragon, 0.5f);
-        int damageDealt = player.DecrementHealth(damage - player.armor);
+        int damageDealt = player.DecrementHealth(damage - player.GetArmor());
         string[] sentences =
             {
                 "Dragon's turn",

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Slime : Enemy
 {
-    public int specialCooldownMax = 2;
+    public int specialCooldownMax = 3;
     private int specialCooldown;
 
     private void Start()
@@ -29,8 +29,9 @@ public class Slime : Enemy
     public void SpecialAttack()
     {
         Player player = FindObjectOfType<Player>();
+        player.AddStatusEffect(Status.Frost, 2);
         armor += 2;
-        player.DecrementArmor(2);
+        //player.DecrementArmor(2);
         string[] sentences =
         {
            "Frost Slime uses Frosty Curse",
@@ -43,7 +44,7 @@ public class Slime : Enemy
     public void NomralAttack()
     {
         Player player = FindObjectOfType<Player>();
-        int damageDealt = player.DecrementHealth(damage - player.armor);
+        int damageDealt = player.DecrementHealth(damage - player.GetArmor());
         string[] sentences =
         {
            "Frost Slime's turn",

@@ -9,7 +9,7 @@ public class Spider : Enemy {
     {
         Player player = FindObjectOfType<Player>();
         SoundController.Play((int)SFX.Spider, 0.5f);
-        int damageDealt = player.DecrementHealth(damage - player.armor);
+        int damageDealt = player.DecrementHealth(damage - player.GetArmor());
         float rate = UnityEngine.Random.Range(0.0f, 5.0f);
         if (rate > 3.0f)
         {

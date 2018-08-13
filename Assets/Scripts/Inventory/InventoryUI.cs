@@ -83,7 +83,7 @@ public class InventoryUI : MonoBehaviour {
         // Delete all objects then rebuild, so that each object shifts over
         DeleteAllInventoryUI();
 
-        Debug.Log(itemList.Count);
+        //Debug.Log(itemList.Count);
         int slotIndex = 0;
         foreach (Item item in itemList)
         {         

@@ -28,7 +28,7 @@ public class Bandit : Enemy {
     private void SpecialAttack()
     {
         Player player = FindObjectOfType<Player>();
-        int damageDealt = player.DecrementHealth(damage * 2 - player.armor);
+        int damageDealt = player.DecrementHealth(damage * 2 - player.GetArmor());
         string[] sentences =
             {
                 "Bandit's turn",
@@ -41,7 +41,7 @@ public class Bandit : Enemy {
     private void NormaAttack()
     {
         Player player = FindObjectOfType<Player>();
-        int damageDealt = player.DecrementHealth(damage - player.armor);
+        int damageDealt = player.DecrementHealth(damage - player.GetArmor());
         string[] sentences =
             {
                 "Bandit's turn",

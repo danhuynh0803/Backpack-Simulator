@@ -52,8 +52,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Bandit
-  maxHealth: 50
-  health: 50
+  maxHealth: 10
+  health: 10
   damage: 20
   armor: 0
   itemDropList:

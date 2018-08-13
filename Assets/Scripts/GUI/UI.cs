@@ -33,8 +33,8 @@ public class UI : MonoBehaviour {
     {
         health.text = player.GetHealth() + "/" + player.maxHealth;
         healthSlider.value = player.GetHealth();
-        damage.text = "Attack: " + player.damage.ToString();
-        armor.text = "Armor: " + player.armor.ToString();
+        damage.text = "Attack: " + player.GetDamage().ToString();
+        armor.text = "Armor: " + player.GetArmor().ToString();
         weight.text = "Total Weight: " + player.GetWeight();
         UpdateStatusText();
     }
@@ -46,12 +46,7 @@ public class UI : MonoBehaviour {
         int encumbered = player.GetStatusEffect(Status.Encumbered);
         int poisoned = player.GetStatusEffect(Status.Poison);
         int frost = player.GetStatusEffect(Status.Frost);
-        int elemental = player.GetStatusEffect(Status.ElementalDamage);
-
-        Debug.Log(encumbered);
-        Debug.Log(poisoned);
-        Debug.Log(frost);
-        Debug.Log(elemental);
+        int elemental = player.GetStatusEffect(Status.ElementalDamage);        
 
         if (encumbered > 0) {
             playerStatuses += "Encumbered " +

@@ -56,7 +56,7 @@ public class Inventory : MonoBehaviour {
 
     public void AddItem(Item item)
     {
-        Debug.Log("AddItem");
+        //Debug.Log("AddItem");
         itemList.Add(item);
 
         if (inventoryUI == null)
@@ -94,6 +94,16 @@ public class Inventory : MonoBehaviour {
     {
         itemList.RemoveAt(removeItemIndex);      
         inventoryUI = FindObjectOfType<InventoryUI>();
+
+        if (itemList == null)
+        {
+            Debug.Log("itemList is null");
+        }
+
+        if (inventoryUI == null)
+        {
+            Debug.Log("inventoryUI is null");
+        }
         inventoryUI.UpdateInventoryUI(itemList);        
     }
 

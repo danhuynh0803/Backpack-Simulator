@@ -22,7 +22,7 @@ public class InventorySlot : MonoBehaviour {
 
     public void ClickItemButton()
     {
-        Debug.Log("ClickItemButton at slot:" + itemSlotIndex);
+        //Debug.Log("ClickItemButton at slot:" + itemSlotIndex);
         
         GameObject itemDescriptionPanel = FindObjectOfType<InventoryUI>().itemDescriptionPanel;
         itemDescriptionPanel.SetActive(true);

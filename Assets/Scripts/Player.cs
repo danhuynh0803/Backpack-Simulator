@@ -28,9 +28,15 @@ public class Player : MonoBehaviour {
 
     public int maxHealth = 100;
     private int health;
-    public int damage;
+
+    public int preBattleDamage;
+    int damage;
+
     public int elementalDamage;
-    public int armor;
+
+    public int preBattleArmor;
+    private int armor;
+
     private int weight;
     private Inventory inventory;
     private DialogManager dialogManager;
@@ -57,6 +63,16 @@ public class Player : MonoBehaviour {
         }
     }
 
+    public void SetStatusEffect(Status status, int statusAmount)
+    {
+        statusEffects[(int)status] = statusAmount;
+    }
+
+    public void RemoveStatusEffect(Status status)
+    {
+        statusEffects[(int)status] = 0;
+    }
+
     public int GetStatusEffect(Status status)
     {
         return statusEffects[(int)status];
@@ -66,20 +82,34 @@ public class Player : MonoBehaviour {
     {
         health = maxHealth;
         weight = 0;
-        Debug.Log("Player health: " + health);
+        //Debug.Log("Player health: " + health);
     }
     public void Start()
     {
         dialogManager = FindObjectOfType<DialogManager>();
+        ApplyStatusEffects();
+    }
+  
+    public void ApplyStatusEffects()
+    {
+        SetStatusEffect(Status.Encumbered, ((GetWeight() - 50) / 10));
+        armor = preBattleArmor - GetStatusEffect(Status.Frost);
+        damage = preBattleDamage - GetStatusEffect(Status.Encumbered);
+        elementalDamage = GetStatusEffect(Status.ElementalDamage);
+    }
+
+    public void ApplyHealthDebuffs()
+    {
+        DecrementHealth(GetStatusEffect(Status.Poison));
     }
 
     // Attack the enemy that is set in the combat encounter in gamecontroller
     public void Attack(Enemy enemy)
     {
-        if (weight > 100)
-        {
-            isEncumbered = true;
-        }
+        // Set encumbered
+        //SetStatusEffect(Status.Encumbered, ((GetWeight() - 50) % 10));
+        ApplyStatusEffects();
+         
         if (enemy == null)
         {
             Debug.LogError("ERROR: there is no enemy to battle");
@@ -143,7 +173,10 @@ public class Player : MonoBehaviour {
             };
             PrintNextSentence(sentences);
         }
+
+        ApplyHealthDebuffs();
     }
+
     public void PrintNextSentence(string[] sentences)
     {
         Dialog playerTurn = new Dialog("enemy turn", sentences);
@@ -169,6 +202,11 @@ public class Player : MonoBehaviour {
         return health;
     }
 
+    public int GetDamage()
+    {
+        return damage;
+    }
+
     public void IncrementArmor(int addArmor)
     {
         armor += addArmor;
@@ -177,6 +215,11 @@ public class Player : MonoBehaviour {
     public void IncrementElemental(int addElemental)
     {
         elementalDamage += addElemental;
+    }
+
+    public int GetArmor()
+    {
+        return armor;
     }
 
     public void DecrementArmor(int decArmor)
@@ -212,11 +255,15 @@ public class Player : MonoBehaviour {
     public int GetWeight()
     {
         int bagWeight = 0;
-        foreach (Item item in Inventory.instance.itemList)
+        Inventory inventory = FindObjectOfType<Inventory>();
+        if (inventory != null)
         {
-            if (item != null)
+            foreach (Item item in inventory.itemList)
             {
-                bagWeight += item.weight;
+                if (item != null)
+                {
+                    bagWeight += item.weight;
+                }
             }
         }
         return bagWeight + weight;

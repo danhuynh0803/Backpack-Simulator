@@ -9,7 +9,7 @@ public class Golem : Enemy {
     public override void Attack()
     {
         Player player = FindObjectOfType<Player>();
-        int damageDealt = player.DecrementHealth(damage - player.armor);
+        int damageDealt = player.DecrementHealth(damage - player.GetArmor());
         SoundController.Play((int)SFX.StoneGolem, 0.5f);
         string[] sentences =
             {
