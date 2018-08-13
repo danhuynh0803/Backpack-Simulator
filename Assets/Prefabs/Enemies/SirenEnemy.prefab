@@ -57,13 +57,15 @@ MonoBehaviour:
   damage: 2
   armor: 0
   itemDropList:
-  - {fileID: 114681885517262028, guid: 78f5e07890607e848b731bdbc200b7c2, type: 2}
+  - {fileID: 114378295558346348, guid: 36457c0d323871b48b17f0567c5ed2d1, type: 2}
   - {fileID: 114388840988385336, guid: e327d3550a3a0d94b91381b180e6b416, type: 2}
   - {fileID: 114388840988385336, guid: 1122dbb44a6b4014daa4db722a9be21a, type: 2}
   - {fileID: 114388840988385336, guid: 91f77bb603180234cb30b04a02b30d0e, type: 2}
   - {fileID: 114285165700791900, guid: 9f3a86bd36fdd7a4ba6ad0394d2be259, type: 2}
   - {fileID: 114388840988385336, guid: 96e5326a870a6dd4ca8dded16d7c7bf0, type: 2}
-  - {fileID: 114640415795924300, guid: b9ca85f9519c8c24bae26c730a48128b, type: 2}
+  - {fileID: 114378295558346348, guid: 36457c0d323871b48b17f0567c5ed2d1, type: 2}
   - {fileID: 114388840988385336, guid: c7dda22597bd1ae44a9e8f1ee2638558, type: 2}
   - {fileID: 114388840988385336, guid: 3cc2f8a8678b6684f91527b73dcf95ad, type: 2}
   dialogManager: {fileID: 0}
+  specialCooldownMax: 3
+  healAmount: 0

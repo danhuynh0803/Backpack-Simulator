@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Menu.unity
     guid: 9e234a2dd7004dd4cb7721b777e39470
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/OverworldMerge.unity
     guid: ab75867ab23e454429ce352833b5ef9d
   - enabled: 0
@@ -17,3 +17,6 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 71041f78bf74dcc43b4a733c3374f888
+  - enabled: 1
+    path: Assets/_Scenes/DannyTestCrafting.unity
+    guid: ed31bdf7e49318547b1c15abddd9f0a5

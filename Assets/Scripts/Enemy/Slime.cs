@@ -36,7 +36,7 @@ public class Slime : Enemy
         {
            "Frost Slime uses Frosty Curse",
            "Frost Slime's armor is increases by 2!",
-           "Player's armor is decreased by 2!"
+           "綠Adventure右's armor is decreased by 2!"
         };
         dialogManager.PrintEnemyNextSentence(sentences);
     }

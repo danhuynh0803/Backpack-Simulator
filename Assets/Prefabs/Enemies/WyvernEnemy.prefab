@@ -66,4 +66,5 @@ MonoBehaviour:
   - {fileID: 114285165700791900, guid: 9f3a86bd36fdd7a4ba6ad0394d2be259, type: 2}
   - {fileID: 114648063813858984, guid: 3f67dc4089586d644a85d8d6081beee9, type: 2}
   - {fileID: 114388840988385336, guid: a496c1d9adc088f4f98d662a35492264, type: 2}
+  - {fileID: 114388840988385336, guid: a15f17c3c7014bb43b81202fbe1b0d44, type: 2}
   dialogManager: {fileID: 0}

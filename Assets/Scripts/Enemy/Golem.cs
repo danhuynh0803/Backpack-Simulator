@@ -13,8 +13,8 @@ public class Golem : Enemy {
         SoundController.Play((int)SFX.StoneGolem, 0.5f);
         string[] sentences =
             {
-                "Sand Golem's turn",
-                "Sand Golem deals " + damageDealt + " damage.",
+                "Ancient Golem's turn",
+                "Ancient Golem deals " + damageDealt + " damage.",
             };
         dialogManager.PrintEnemyNextSentence(sentences);
     }

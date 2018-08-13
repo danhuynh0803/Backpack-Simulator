@@ -27,17 +27,42 @@ public class DialogManager : MonoBehaviour {
     {
         printingSentece = sentence;
         textGameObject.text += "\n";
+        bool isAddingColor = false;
+        string temp = "";
         // Print each character one by one
         foreach (char letter in sentence)
         {
-            if (System.Char.IsNumber(letter))
-            { 
-                textGameObject.text += "<color=#ff0000ff>";
-                textGameObject.text += letter;
-                textGameObject.text += "</color>";
+            if (isAddingColor)
+            {
+                if (letter == '右')
+                {
+                    temp += "</color>";
+                    textGameObject.text += temp;
+                    temp = "";
+                    isAddingColor = false;
+                }
+                else
+                    temp += letter;
             }
             else
-                textGameObject.text += letter;
+            {
+                if (System.Char.IsNumber(letter))
+                {
+                    textGameObject.text += "<color=#ff0000ff>";
+                    textGameObject.text += letter;
+                    textGameObject.text += "</color>";
+                }
+                else
+                if (letter == '綠')
+                {
+                    isAddingColor = true;
+                    temp += "<color=#00ff00ff>";
+                }
+                else
+                {
+                    textGameObject.text += letter;
+                }
+            }
             printingSentece = printingSentece.Substring(1);
             scrollbar.value = 0f;
             yield return new WaitForSeconds(typingSpeed);
@@ -120,10 +145,16 @@ public class DialogManager : MonoBehaviour {
     {
         dialogSentences = new Queue<string>();
     }
+    private void Start()
+    {
+        //Dialog example = new Dialog("", exampleDialog);
+        //StartDialog(example);
+    }
+
 
     public void PrintEnemyNextSentence(string[] sentences)
     {
-        Dialog playerTurn = new Dialog("enemy turn", sentences);
+        Dialog playerTurn = new Dialog("Enemy's turn", sentences);
         isInDialog = true;
         StartDialog(playerTurn);
         ContinueToNextSentence();
@@ -147,7 +178,7 @@ public class Dialog
 
     public Dialog(string combatText)
     {
-        name = "player";
+        name = "綠Adventurer右";
         sentences = new string[1] { combatText };  
     }
 

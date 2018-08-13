@@ -64,7 +64,7 @@ public class UI : MonoBehaviour {
         }
         if (elemental > 0)
         {
-            playerStatuses += "Elemental Damage +" +
+            playerStatuses += "Elemental Dmg +" +
                 player.GetStatusEffect(Status.ElementalDamage) + "\n";
         }
 

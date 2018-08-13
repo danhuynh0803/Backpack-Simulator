@@ -53,7 +53,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Rumors
-  description: Encyopedia of Nonesenses.
+  description: Rumors have a strange power. One rumor is that you are benevolent and
+    generous at rating indie games.
   weight: 10
   icon: {fileID: 21300012, guid: b06d68dfffbdf804db402613b981dfcc, type: 3}
 --- !u!212 &212541086107675770

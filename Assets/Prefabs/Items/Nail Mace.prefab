@@ -54,7 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Nail Mace
   description: Very intuitive
-  weight: 16
+  weight: 12
   icon: {fileID: 21300240, guid: 9854522c700d4814d931230a83cc3fed, type: 3}
 --- !u!212 &212531672897564474
 SpriteRenderer:

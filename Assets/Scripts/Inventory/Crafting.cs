@@ -6,10 +6,47 @@ using UnityEngine;
 
 public class Crafting : MonoBehaviour {
 
-    public Inventory inventory;
-    public Recipe testRecipe;
+    public List<GameObject> craftingCanvases = new List<GameObject>();
+    private Inventory inventory;
+    public List<Recipe> recipes = new List<Recipe>();
     private string[] componentNames;
     private int[] slotIndices;
+    private bool isCrafting;
+
+    private void Start()
+    {
+        CraftingUI craftingUI = FindObjectOfType<CraftingUI>();
+        inventory = FindObjectOfType<Inventory>();
+
+        foreach (Recipe recipe in recipes)
+        {
+            if (recipes != null)
+            {
+                craftingUI.AddItemToUI(recipe);
+            }
+        }
+    }
+
+    public void ToggleCraftingCanvases()
+    {
+        isCrafting = !isCrafting;
+        if (isCrafting)
+        {
+            foreach (GameObject canvas in craftingCanvases)
+            {
+                if (canvas != null)
+                    canvas.SetActive(true);
+            }
+        }
+        else
+        {
+            foreach (GameObject canvas in craftingCanvases)
+            {
+                if (canvas != null)
+                    canvas.SetActive(false);
+            }
+        }
+    }
 
     public void Craft(Recipe recipe)    
     {        
@@ -27,17 +64,22 @@ public class Crafting : MonoBehaviour {
             // Make sure to sort first by lowest since each item will have a new slot index 
             // that will be one less as we shift items left
             Array.Sort(slotIndices);
-            inventory.RemoveItem(slotIndices[0]);            
+            inventory.RemoveItem(slotIndices[0]);
             for (int i = 1; i < slotIndices.Length; ++i)
             {
                 // Shift the second item onward by one to take into account the shifting 
                 // of slot indices when calling remove item
-                inventory.RemoveItem(slotIndices[i]-1);
+                inventory.RemoveItem(slotIndices[i] - 1);
             }
 
             // Add the newly crafted item into inventory
+            SoundController.Play((int)SFX.Crafting, 0.5f);
             inventory.AddItem(recipe.recipeItem);
-        }        
+        }
+        else
+        {
+            Debug.Log("Do not have all componenets to make " + recipe.recipeItem.name);
+        }       
     }
 
     public bool HasAllComponents()

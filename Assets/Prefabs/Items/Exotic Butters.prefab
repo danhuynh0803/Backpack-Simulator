@@ -53,10 +53,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Exotic Butters
-  description: Once given as work-related gifts until people started realizing why
-    certain employees did not last a few months past retirement.
-  weight: 1
-  icon: {fileID: 21300200, guid: 9854522c700d4814d931230a83cc3fed, type: 3}
+  description: Given to bad employees as a gift basket.
+  weight: 2
+  icon: {fileID: 21300048, guid: b06d68dfffbdf804db402613b981dfcc, type: 3}
 --- !u!212 &212543207830382694
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -89,7 +88,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300200, guid: 9854522c700d4814d931230a83cc3fed, type: 3}
+  m_Sprite: {fileID: 21300048, guid: b06d68dfffbdf804db402613b981dfcc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

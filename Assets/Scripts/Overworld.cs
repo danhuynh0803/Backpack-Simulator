@@ -5,12 +5,7 @@ using UnityEngine;
 public class Overworld : MonoBehaviour {
 
     [Header("Enemy Encounters")]
-    public GameObject frostButton;
-    public GameObject lostGhostButton;
-    public GameObject seaButton;
-    public GameObject sandButton;
     public GameObject mountainButton;
-    public GameObject grassButton;
     public GameObject forestButton;
     public GameObject castleButton;
     public GameObject towerButton;
@@ -24,27 +19,13 @@ public class Overworld : MonoBehaviour {
     // Use this for initialization
     void Start() {
 
-        float rate = Random.Range(0.0f, 3.0f);
         float rate2 = Random.Range(0.0f, 2.0f);
         float rate3 = Random.Range(0.0f, 2.0f);
-        float rate4 = Random.Range(0.0f, 2.0f);
         float rate5 = Random.Range(0.0f, 2.0f);
 
-        if (rate > 2.0f)
-        {
-            lostGhostButton.SetActive(true);
-        }
-        else if (rate > 1.0f)
-        {
-            frostButton.SetActive(true);
-        }
-        else if (rate > 0.0f)
-        {
-            seaButton.SetActive(true);
-        }
         if (rate2 > 1.0f)
         {
-            grassButton.SetActive(true);
+            mountainButton.SetActive(true);
         }
         if (rate2 < 1.0f)
         {
@@ -57,14 +38,6 @@ public class Overworld : MonoBehaviour {
         if (rate3 < 1.0f)
         {
             towerButton.SetActive(true);
-        }
-        if (rate4 > 1.0f)
-        {
-            sandButton.SetActive(true);
-        }
-        if (rate4 < 1.0f)
-        {
-            mountainButton.SetActive(true);
         }
         if (rate5 > 1.0f)
         {

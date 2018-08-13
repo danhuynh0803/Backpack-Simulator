@@ -54,7 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Nails
   description: He had to take these.
-  weight: 1
+  weight: 4
   icon: {fileID: 21300000, guid: 2c02e90151cf4c5449c139bed9ee4b58, type: 3}
 --- !u!212 &212930430339704426
 SpriteRenderer:

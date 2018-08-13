@@ -54,7 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Fish Oil
   description: +5 Elemental Damage. +5 Stink.
-  weight: 3
+  weight: 2
   icon: {fileID: 21300112, guid: 09802840fc1be9840b4a4703d1c8d13d, type: 3}
   elemental: 5
 --- !u!212 &212951003163781652

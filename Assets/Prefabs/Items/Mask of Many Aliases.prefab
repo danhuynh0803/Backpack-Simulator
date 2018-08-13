@@ -54,7 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Mask of Many Aliases
   description: Who are they anyway?
-  weight: 1
+  weight: 5
   icon: {fileID: 21300278, guid: 9854522c700d4814d931230a83cc3fed, type: 3}
 --- !u!212 &212529384729401470
 SpriteRenderer:

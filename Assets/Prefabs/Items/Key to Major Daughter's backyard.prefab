@@ -54,7 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Key to Mayor Daughter's backdoor
   description: Best not to ponder these things.
-  weight: 7
+  weight: 3
   icon: {fileID: 21300192, guid: 9854522c700d4814d931230a83cc3fed, type: 3}
   healAmount: 0
 --- !u!212 &212597579472664290

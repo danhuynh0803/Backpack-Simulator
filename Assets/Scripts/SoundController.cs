@@ -14,7 +14,9 @@ public enum SFX
     Wyvern,
     Spider,
     Siren,
-    Dragon
+    Dragon,
+    Crafting,
+    Cathedral
     // Add more as we go
 };
 

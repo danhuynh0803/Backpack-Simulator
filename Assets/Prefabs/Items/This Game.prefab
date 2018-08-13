@@ -55,7 +55,7 @@ MonoBehaviour:
   name: This Game
   description: A copy of this video game which is pretty impressive cause its a WebGL
     game.
-  weight: 3
+  weight: 0
   icon: {fileID: 21300000, guid: 79b97a11a3b5a0e4b82a62369b13fbbc, type: 3}
 --- !u!212 &212042777420856416
 SpriteRenderer:

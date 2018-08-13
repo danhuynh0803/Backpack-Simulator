@@ -236,6 +236,6 @@ public class GameController : MonoBehaviour
 
     public void Restart()
     {
-        menuController.LoadScene("OverworldMerge");
+        menuController.LoadScene("DannyTestCrafting");
     }
 }

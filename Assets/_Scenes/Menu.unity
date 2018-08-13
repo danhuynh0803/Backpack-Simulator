@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074002, b: 0.3587271, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -324,10 +324,11 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "You died and were reborn in a mythical fantasy world... as a sentinent
     backpack. \n\nWorst yet, your adventurer is a hoarder and kleptomaniac who takes
-    everything he finds.\n\n As a sentinent backback it is up to you to NOT RUN OUT
+    everything he finds.\n\nAs a sentinent backback it is up to you to NOT RUN OUT
     OF THE SPACE but still have the right tools to save the world! \n\nBalance your
-    adventurer's inventory, gear, stats and space. Read up on enemies and mythical
-    gear and plan what items you might need and what you have to discard."
+    adventurer's inventory, gear, stats and space. Read up on enemies and plan your
+    encounters. Craft potions and items to keep your weight down because as you run
+    out of space your Adventurer will get encumbered and deal less damage."
 --- !u!222 &82952582
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2689,8 +2690,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9336568499db4d42bc6a87f7115f2c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  battleCanvas: {fileID: 0}
+  battleCanvas:
+  - {fileID: 0}
   encountersCanvas: {fileID: 0}
+  craftingButton: {fileID: 0}
   controlMenu: {fileID: 506437670}
   soundMenu: {fileID: 0}
   creditMenu: {fileID: 1220681595}
@@ -3384,7 +3387,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
           m_FloatArgument: 0
-          m_StringArgument: OverworldMerge
+          m_StringArgument: DannyTestCrafting
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,

@@ -43,7 +43,10 @@ public class Player : MonoBehaviour {
     public bool isPoisoned = false;
     public bool isEncumbered = false;
     public bool isDemoralized = false;
-  
+
+    private int itemCap;
+
+
     // Four status effects: 
     // 1) encumbered, 2) poison, 3) frost, 4) elemental damage
     private int[] statusEffects = new int[4];
@@ -89,7 +92,12 @@ public class Player : MonoBehaviour {
         dialogManager = FindObjectOfType<DialogManager>();
         ApplyStatusEffects();
     }
-  
+
+    private void Update()
+    {
+        ApplyStatusEffects();
+    }
+
     public void ApplyStatusEffects()
     {
         SetStatusEffect(Status.Encumbered, ((GetWeight() - 50) / 10));
@@ -108,7 +116,7 @@ public class Player : MonoBehaviour {
     {
         // Set encumbered
         //SetStatusEffect(Status.Encumbered, ((GetWeight() - 50) % 10));
-        ApplyStatusEffects();
+        //ApplyStatusEffects();
          
         if (enemy == null)
         {
@@ -138,16 +146,28 @@ public class Player : MonoBehaviour {
         }
         enemy.health = Mathf.Clamp(enemy.health - damageDealt, 0, enemy.maxHealth);
 
-        if (enemy.name == "Sand Golem" && damageDealt > 0)
+        if (enemy.name == "Ancient Golem" && damageDealt > 0 && itemCap <= 5)
         {
+            itemCap++;
+            enemy.armor--;
             string[] sentences =
             {
-                "Player's turn",
-                "Player deals " + damageDealt + " damage.",
+                "綠Adventurer右's turn",
+                "綠Adventurer右 deals " + damageDealt + " damage.",
                 CheckEnemyHealth(enemy.health, enemy),
                 "Obtain an iron ore!"
             };
             Inventory.instance.AddItem(enemy.itemDropList[0]);
+            PrintNextSentence(sentences);
+        }
+        else if (enemy.name == "Ancient Golem" && damageDealt > 0 && itemCap >= 5)
+        {
+            string[] sentences =
+            {
+                "綠Adventurer右's turn",
+                "綠Adventurer右 deals " + damageDealt + " damage.",
+                CheckEnemyHealth(enemy.health, enemy),
+            };
             PrintNextSentence(sentences);
         }
         else
@@ -155,8 +175,8 @@ public class Player : MonoBehaviour {
         {
             string[] sentences =
             {
-                "Player's turn",
-                "Player deals " + damageDealt + " damage.",
+                "綠Adventurer右's turn",
+                "綠Adventurer右 deals " + damageDealt + " damage.",
                 CheckEnemyHealth(enemy.health, enemy),
                 "Obtain an gold ore!"
             };
@@ -167,8 +187,8 @@ public class Player : MonoBehaviour {
         {
             string[] sentences =
             {
-                "Player's turn",
-                "Player deals " + damageDealt + " damage.",
+                "綠Adventurer右's turn",
+                "綠Adventurer右 deals " + damageDealt + " damage.",
                 CheckEnemyHealth(enemy.health, enemy)
             };
             PrintNextSentence(sentences);

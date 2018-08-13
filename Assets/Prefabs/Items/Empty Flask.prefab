@@ -53,8 +53,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Empty Flask
-  description: It is empty
-  weight: 4
+  description: Save for some dead flies and dust.
+  weight: 1
   icon: {fileID: 21300144, guid: 09802840fc1be9840b4a4703d1c8d13d, type: 3}
 --- !u!212 &212567341511433688
 SpriteRenderer:

@@ -57,7 +57,7 @@ MonoBehaviour:
   damage: 2
   armor: 0
   itemDropList:
-  - {fileID: 114388840988385336, guid: e0025c72eafe33f4a8ba2f94b65b67e5, type: 2}
+  - {fileID: 114378295558346348, guid: 36457c0d323871b48b17f0567c5ed2d1, type: 2}
   - {fileID: 114388840988385336, guid: a15f17c3c7014bb43b81202fbe1b0d44, type: 2}
   - {fileID: 114388840988385336, guid: 83815c074f4cfd142b49ce118337b992, type: 2}
   - {fileID: 114388840988385336, guid: 79c66ccdfc77fca49b172a2f3f11ade7, type: 2}
@@ -65,5 +65,6 @@ MonoBehaviour:
   - {fileID: 114388840988385336, guid: f52a5ed758d5147479b5a0ae6b589986, type: 2}
   - {fileID: 114388840988385336, guid: ca7132426e1b6fe4d854eb514180695d, type: 2}
   - {fileID: 114388840988385336, guid: 8391f0b4146ab40409d48dbfdecfe8f6, type: 2}
-  - {fileID: 114951075248145476, guid: 7e20f41ef3467af4a9e5b4df43299613, type: 2}
+  - {fileID: 114378295558346348, guid: 36457c0d323871b48b17f0567c5ed2d1, type: 2}
+  - {fileID: 114388840988385336, guid: 8391f0b4146ab40409d48dbfdecfe8f6, type: 2}
   dialogManager: {fileID: 0}

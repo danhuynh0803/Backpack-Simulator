@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {    
-    public GameObject battleCanvas;
+    public List<GameObject> battleCanvas = new List<GameObject>();
     public GameObject encountersCanvas;
+    public GameObject craftingButton;
 
     [Header("Pause Menu related")]
     public GameObject controlMenu;
@@ -31,13 +32,9 @@ public class MenuController : MonoBehaviour
         menuStack = new Stack<GameObject>();
         fadeController = FindObjectOfType<Fading>();
     }
+
     void Update()
     {
-        if (isBattleCanvasOpen)
-        {
-
-        }
-
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             // Close any open windows that is NOT the main pause menu
@@ -126,12 +123,20 @@ public class MenuController : MonoBehaviour
             SoundController.Play((int)SFX.Backpack, 0.3f);
             if (isBattleCanvasOpen)
             {
-                battleCanvas.SetActive(true);
+                foreach (GameObject canvas in battleCanvas)
+                {
+                    canvas.SetActive(true);
+                }
+                craftingButton.SetActive(false);
                 encountersCanvas.SetActive(false);
             }
             else
             {
-                battleCanvas.SetActive(false);
+                foreach (GameObject canvas in battleCanvas)
+                {
+                    canvas.SetActive(false);
+                }
+                craftingButton.SetActive(true);
                 encountersCanvas.SetActive(true);
             }
         }

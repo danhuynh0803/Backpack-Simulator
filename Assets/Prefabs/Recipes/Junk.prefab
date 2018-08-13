@@ -19,9 +19,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4401230478563872}
-  - component: {fileID: 114276131680194614}
+  - component: {fileID: 114748150327733142}
   m_Layer: 0
-  m_Name: TestRecipe
+  m_Name: Junk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,7 +40,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114276131680194614
+--- !u!114 &114748150327733142
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -51,7 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 874f626574be3f9469af6146489029b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recipeItem: {fileID: 0}
+  recipeItem: {fileID: 114388840988385336, guid: f4efab7071e07df4fac0a08e27aad924,
+    type: 2}
   components:
-  - 
-  - 
+  - Small Key
+  - Locked Chest
