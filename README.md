@@ -3,7 +3,7 @@ Game made for Ludum Dare 42: "Running out of space"
 
 This game is an RPG that is centered around inventory management. Getting encumbered results in status debuffs.
 
-Ludum Dare submission page: https://ldjam.com/events/ludum-dare/41/city-blocks
+Ludum Dare submission page: https://ldjam.com/events/ludum-dare/42/backpack-simulator
 
 Play it here: https://ewdlop.itch.io/backpack-simulator
 
