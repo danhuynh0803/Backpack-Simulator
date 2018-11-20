@@ -16,7 +16,8 @@ public enum SFX
     Siren,
     Dragon,
     Crafting,
-    Cathedral
+    Cathedral,
+    Bandits
     // Add more as we go
 };
 

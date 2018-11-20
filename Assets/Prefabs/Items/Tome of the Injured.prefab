@@ -54,7 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Tome of the Injured
   description: Contains unfathomable horrors, a classic textbook for a Lawyer.
-  weight: 25
+  weight: 10
   icon: {fileID: 21300290, guid: 9854522c700d4814d931230a83cc3fed, type: 3}
 --- !u!212 &212701536301255094
 SpriteRenderer:

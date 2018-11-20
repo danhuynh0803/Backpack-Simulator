@@ -54,5 +54,5 @@ MonoBehaviour:
   recipeItem: {fileID: 114648063813858984, guid: 976cb633ba253294b980e0746a9d13d3,
     type: 2}
   components:
-  - Mace
+  - Mace of Unfulfilled Dreams
   - Nails

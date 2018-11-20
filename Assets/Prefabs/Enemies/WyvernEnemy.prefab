@@ -54,8 +54,8 @@ MonoBehaviour:
   name: Wyvern
   maxHealth: 15
   health: 15
-  damage: 5
-  armor: 4
+  damage: 3
+  armor: 1
   itemDropList:
   - {fileID: 114249504169042712, guid: 541c622e7e073be4ca73847dcb8a2224, type: 2}
   - {fileID: 114388840988385336, guid: eb056e6ff78925f4288a442823292176, type: 2}

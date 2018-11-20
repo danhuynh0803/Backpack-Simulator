@@ -54,7 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Pair of Boots
   description: These boots are also sentinent, makes you feel lucky to be a backpack.
-  weight: 1
+  weight: 3
   icon: {fileID: 21300150, guid: 9854522c700d4814d931230a83cc3fed, type: 3}
 --- !u!212 &212061105583008240
 SpriteRenderer:

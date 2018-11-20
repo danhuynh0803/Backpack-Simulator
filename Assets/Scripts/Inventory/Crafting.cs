@@ -48,6 +48,43 @@ public class Crafting : MonoBehaviour {
         }
     }
 
+    public bool HasAllComponents(Recipe recipe)
+    {
+        if (inventory == null)
+        {
+            inventory = FindObjectOfType<Inventory>();
+        }
+        
+        componentNames = recipe.components.ToArray();
+        bool[] hasAllComponents = new bool[componentNames.Length];
+
+        // Check that player has the prerequisite items for the recipe
+        for (int i = 0; i < componentNames.Length; ++i)
+        {
+            string componentName = componentNames[i];
+            componentName = Regex.Replace(componentName, @"\s+", "");
+            //Debug.Log(componentName);
+            for (int j = 0; j < inventory.itemList.Count; ++j)
+            {
+                string itemName = inventory.itemList[j].name;
+                itemName = Regex.Replace(itemName, @"\s+", "");
+                if (itemName.ToLower().Equals(componentName.ToLower()))
+                {                
+                    hasAllComponents[i] = true;
+                }
+            }
+        }
+
+        bool canCraft = true;
+        foreach (bool hasComponent in hasAllComponents)
+        {
+            if (!hasComponent)
+                canCraft = false;
+        }
+
+        return canCraft;
+    }
+
     public void Craft(Recipe recipe)    
     {        
         if (inventory == null)

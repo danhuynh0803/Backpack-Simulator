@@ -59,6 +59,6 @@ MonoBehaviour:
   itemDropList:
   - {fileID: 114648063813858984, guid: 09e61ed1b51614c4f9e5d5fc4edd2d20, type: 2}
   - {fileID: 114648063813858984, guid: 74a776db9424f8149a31a86fdfeb9807, type: 2}
-  - {fileID: 114388840988385336, guid: f4efab7071e07df4fac0a08e27aad924, type: 2}
-  - {fileID: 114388840988385336, guid: f4efab7071e07df4fac0a08e27aad924, type: 2}
+  - {fileID: 114648063813858984, guid: 9f2f4433071667a44bd075ee9386492b, type: 2}
+  - {fileID: 114378295558346348, guid: ab9fe05212f672143afdd3e46279c1d5, type: 2}
   dialogManager: {fileID: 0}

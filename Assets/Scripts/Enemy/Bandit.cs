@@ -29,6 +29,7 @@ public class Bandit : Enemy {
     {
         Player player = FindObjectOfType<Player>();
         int damageDealt = player.DecrementHealth(damage * 2 - player.GetArmor());
+        SoundController.Play((int)SFX.Bandits, 0.5f);
         string[] sentences =
             {
                 "Bandit's turn",
@@ -42,6 +43,7 @@ public class Bandit : Enemy {
     {
         Player player = FindObjectOfType<Player>();
         int damageDealt = player.DecrementHealth(damage - player.GetArmor());
+        SoundController.Play((int)SFX.Bandits, 0.5f);
         string[] sentences =
             {
                 "Bandit's turn",

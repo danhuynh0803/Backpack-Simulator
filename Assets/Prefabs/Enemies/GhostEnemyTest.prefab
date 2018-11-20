@@ -52,17 +52,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Ghost
-  maxHealth: 6
-  health: 6
-  damage: 2
+  maxHealth: 5
+  health: 5
+  damage: 10
   armor: 0
   itemDropList:
   - {fileID: 114285165700791900, guid: 9f3a86bd36fdd7a4ba6ad0394d2be259, type: 2}
-  - {fileID: 114285165700791900, guid: f29a1bf645e0154489821325db206161, type: 2}
+  - {fileID: 114388840988385336, guid: 43c7d50f6d3445548991409b0b1612e9, type: 2}
   - {fileID: 114388840988385336, guid: 66d6544b6782e2a4ba443e66f391d721, type: 2}
-  - {fileID: 114285165700791900, guid: f29a1bf645e0154489821325db206161, type: 2}
-  - {fileID: 114285165700791900, guid: 9f3a86bd36fdd7a4ba6ad0394d2be259, type: 2}
+  - {fileID: 114388840988385336, guid: 9fb0afc35c52d20439d52dbb36a611f4, type: 2}
+  - {fileID: 114378295558346348, guid: 36457c0d323871b48b17f0567c5ed2d1, type: 2}
   - {fileID: 114388840988385336, guid: 5ad6ad8bcf30d3842b87cad1b13a7bc3, type: 2}
-  - {fileID: 114388840988385336, guid: f4efab7071e07df4fac0a08e27aad924, type: 2}
-  - {fileID: 114378295558346348, guid: ab9fe05212f672143afdd3e46279c1d5, type: 2}
+  - {fileID: 114388840988385336, guid: a15f17c3c7014bb43b81202fbe1b0d44, type: 2}
+  - {fileID: 114378295558346348, guid: 36457c0d323871b48b17f0567c5ed2d1, type: 2}
   dialogManager: {fileID: 0}

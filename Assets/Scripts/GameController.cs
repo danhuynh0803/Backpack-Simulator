@@ -28,7 +28,8 @@ public class GameController : MonoBehaviour
     private DialogManager dialogManager;
     [Header("Battle canvases")]
     public GameObject battleCanvas;
-
+    public GameObject GameOverCanvas;
+    public GameObject inventoryPanel;
     public bool isInCombat;
 
     private void Start()
@@ -142,7 +143,7 @@ public class GameController : MonoBehaviour
     {
         string[] sentences =
         {
-            "=========Start Combat=========",
+            "========Start Combat========",
             enemy.name + " health = " + enemy.health + "\tplayer health = " + player.GetHealth(),
             "Good luck!"
         };
@@ -158,7 +159,7 @@ public class GameController : MonoBehaviour
         string dropList = "";
         foreach(Item item in enemy.itemDropList)
         {
-            dropList += "Obtain " + item.name + " x1"+ "\n";
+            dropList += "Obtain 金" + item.name + "右 x1"+ "\n";
         }
         string[] sentences =
         {
@@ -186,6 +187,7 @@ public class GameController : MonoBehaviour
 
     void AddDropItemToPlayer()
     {
+        inventoryPanel.SetActive(true);
         FindObjectOfType<InventoryUI>().inventoryScrollBar.value = 0;
         Inventory.instance.AddItems(enemy.itemDropList);
         FindObjectOfType<InventoryUI>().inventoryScrollBar.value = 0;
@@ -197,14 +199,15 @@ public class GameController : MonoBehaviour
         string dropList = "";
         foreach (Item item in enemy.itemDropList)
         {
-            dropList += "Obtain " + item.name + " x1" + "\n";
+            dropList += "Obtain 金" + item.name + "右 x1" + "\n";
         }
         string[] sentences =
         {
             "==========Found Treasure=========",
             "Oh wow... more treasure....... or just more junk." + "\n",
             dropList,
-            "\n" + "Please circle your next destination on the map."
+            "\n" + "Please circle your next destination on the map.",
+            "Press Inventory to show the map."
         };
         Dialog findTreasureDialog = new Dialog("find treasure", sentences);
         dialogManager.StartDialog(findTreasureDialog);
@@ -232,6 +235,7 @@ public class GameController : MonoBehaviour
     private void GameOver()
     {
         PrintDeathCombatText();
+        GameOverCanvas.SetActive(true);
     }
 
     public void Restart()

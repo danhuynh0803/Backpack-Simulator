@@ -55,7 +55,7 @@ MonoBehaviour:
   name: Enchanted Gemstone
   description: Can be cracked open to apply mythical liquid to your weapon. +5 Elemental
     Damage.
-  weight: 3
+  weight: 2
   icon: {fileID: 21300148, guid: 9854522c700d4814d931230a83cc3fed, type: 3}
   elemental: 5
 --- !u!212 &212967871051162178

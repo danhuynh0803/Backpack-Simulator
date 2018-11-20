@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Wish List
-  description: There was supposed to be a crafting system!
+  description: Someone promised me a good sense of humor!
   weight: 0
   icon: {fileID: 21300048, guid: 9854522c700d4814d931230a83cc3fed, type: 3}
 --- !u!212 &212565571606945202

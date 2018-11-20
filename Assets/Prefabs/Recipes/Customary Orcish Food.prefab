@@ -54,6 +54,6 @@ MonoBehaviour:
   recipeItem: {fileID: 114388840988385336, guid: ca7132426e1b6fe4d854eb514180695d,
     type: 2}
   components:
-  - Zombie Head
-  - Frog
+  - Zombie Union Head
+  - Millennial Frog
   - Wedge of Cheese

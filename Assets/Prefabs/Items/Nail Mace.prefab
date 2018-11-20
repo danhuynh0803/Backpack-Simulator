@@ -53,8 +53,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Nail Mace
-  description: Very intuitive
-  weight: 12
+  description: Good for any dead rising.
+  weight: 4
   icon: {fileID: 21300240, guid: 9854522c700d4814d931230a83cc3fed, type: 3}
 --- !u!212 &212531672897564474
 SpriteRenderer:

@@ -59,6 +59,12 @@ public class DialogManager : MonoBehaviour {
                     temp += "<color=#00ff00ff>";
                 }
                 else
+                if (letter == '金')
+                {
+                    isAddingColor = true;
+                    temp += "<color=#ffd700ff>";
+                }
+                else
                 {
                     textGameObject.text += letter;
                 }

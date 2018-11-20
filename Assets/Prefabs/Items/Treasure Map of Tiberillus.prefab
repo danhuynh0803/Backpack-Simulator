@@ -55,7 +55,7 @@ MonoBehaviour:
   name: Treasure Map of Tiberillus
   description: Purchased from a pirate. By pirate I meant kid. By purchased I meant
     stolen.
-  weight: 3
+  weight: 1
   icon: {fileID: 21300256, guid: 9854522c700d4814d931230a83cc3fed, type: 3}
 --- !u!212 &212193892441587754
 SpriteRenderer:

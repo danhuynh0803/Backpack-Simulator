@@ -59,11 +59,10 @@ MonoBehaviour:
   itemDropList:
   - {fileID: 114648063813858984, guid: 74a776db9424f8149a31a86fdfeb9807, type: 2}
   - {fileID: 114648063813858984, guid: 09e61ed1b51614c4f9e5d5fc4edd2d20, type: 2}
-  - {fileID: 114378295558346348, guid: 36457c0d323871b48b17f0567c5ed2d1, type: 2}
-  - {fileID: 114155950503974724, guid: ef4f67ee86ba0ad42b60bc9b90753549, type: 2}
+  - {fileID: 114648063813858984, guid: 9f2f4433071667a44bd075ee9386492b, type: 2}
+  - {fileID: 114378295558346348, guid: ab9fe05212f672143afdd3e46279c1d5, type: 2}
+  - {fileID: 114388840988385336, guid: 91f77bb603180234cb30b04a02b30d0e, type: 2}
   - {fileID: 114388840988385336, guid: 917322e1987b4804e8bb51549e3dfc2d, type: 2}
-  - {fileID: 114378295558346348, guid: 36457c0d323871b48b17f0567c5ed2d1, type: 2}
-  - {fileID: 114388840988385336, guid: 4977458727d574846b52d1fb081acc15, type: 2}
   dialogManager: {fileID: 0}
   specialCooldownMax: 3
   lightWeightMax: 0

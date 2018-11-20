@@ -13,11 +13,14 @@ public class NewDialog : MonoBehaviour
     private float waitTime = 8f;
     float timeLeft;
     public GameObject startGame;
+    public GameObject next;
 
     private void Start()
     {
         index = 0;
         timeLeft = 0f;
+        next.GetComponent<Button>().interactable = false;
+        StartCoroutine(Type());
     }
 
     IEnumerator Type()
@@ -27,25 +30,22 @@ public class NewDialog : MonoBehaviour
             dialogText.text += letter;
             yield return new WaitForSeconds(typingSpeed);
         }
-        index++;
-    }
-
-    void Update()
-    {
-        timeLeft -= Time.deltaTime;
-        if (timeLeft <= 0)
+        next.GetComponent<Button>().interactable = true;
+        if(index >= 3)
         {
-            if (index >= 4)
-            {
-                startGame.SetActive(true);
-            }
-            else
-            {
-                dialogText.text = "";
-                StartCoroutine(Type());
-                timeLeft = waitTime;
-            }
+            startGame.SetActive(true);
+            next.SetActive(false);
         }
-
+    }
+    public void PrintNextSentence()
+    {
+        SoundController.Play((int)SFX.Cathedral, 0.5f);
+        index++;
+        if (index < 4)
+        {
+            dialogText.text = "";
+            StartCoroutine(Type());
+            next.GetComponent<Button>().interactable = false;
+        }
     }
 }

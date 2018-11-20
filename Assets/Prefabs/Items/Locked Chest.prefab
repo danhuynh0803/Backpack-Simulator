@@ -54,7 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Locked Chest
   description: Anything could be in it, even a treasure chest!
-  weight: 15
+  weight: 10
   icon: {fileID: 21300244, guid: 9854522c700d4814d931230a83cc3fed, type: 3}
 --- !u!212 &212288838644763708
 SpriteRenderer:

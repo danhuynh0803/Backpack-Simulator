@@ -54,5 +54,5 @@ MonoBehaviour:
   recipeItem: {fileID: 114388840988385336, guid: 9fb0afc35c52d20439d52dbb36a611f4,
     type: 2}
   components:
-  - Necklace
+  - Necklace of Lost Destinat
   - Rumors

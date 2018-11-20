@@ -52,16 +52,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: FrostSlime
-  maxHealth: 6
-  health: 6
+  maxHealth: 10
+  health: 8
   damage: 4
   armor: 3
   itemDropList:
-  - {fileID: 114681885517262028, guid: 78f5e07890607e848b731bdbc200b7c2, type: 2}
+  - {fileID: 114378295558346348, guid: 36457c0d323871b48b17f0567c5ed2d1, type: 2}
   - {fileID: 114388840988385336, guid: 9fb0afc35c52d20439d52dbb36a611f4, type: 2}
-  - {fileID: 114388840988385336, guid: 2eb31c22298c5834cba49afa52e01302, type: 2}
+  - {fileID: 114388840988385336, guid: 79c66ccdfc77fca49b172a2f3f11ade7, type: 2}
   - {fileID: 114640415795924300, guid: b9ca85f9519c8c24bae26c730a48128b, type: 2}
   - {fileID: 114388840988385336, guid: 43c7d50f6d3445548991409b0b1612e9, type: 2}
   - {fileID: 114388662822032692, guid: 61d1c5c86c26bb142aee825019c3a606, type: 2}
   - {fileID: 114388840988385336, guid: 1f9f09caf0e141447a0a5a1caef2e797, type: 2}
   dialogManager: {fileID: 0}
+  specialCooldownMax: 3

@@ -54,5 +54,5 @@ MonoBehaviour:
   recipeItem: {fileID: 114681885517262028, guid: 78f5e07890607e848b731bdbc200b7c2,
     type: 2}
   components:
-  - Iron
+  - Iron Ore
   - Empty Flask

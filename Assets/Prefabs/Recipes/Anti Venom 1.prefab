@@ -51,8 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 874f626574be3f9469af6146489029b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recipeItem: {fileID: 114388840988385336, guid: a15f17c3c7014bb43b81202fbe1b0d44,
+  recipeItem: {fileID: 114249504169042712, guid: 541c622e7e073be4ca73847dcb8a2224,
     type: 2}
   components:
-  - Stick
+  - Empty Flask
   - Stick
