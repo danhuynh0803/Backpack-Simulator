@@ -13,7 +13,7 @@ public class UI : MonoBehaviour {
     public Text armor;
     public Text weight;
     public Text statusText;
-
+    public Text gold;
     public Slider healthSlider;
 
     private Player player;
@@ -36,6 +36,7 @@ public class UI : MonoBehaviour {
         damage.text = "Attack: " + player.GetDamage().ToString();
         armor.text = "Armor: " + player.GetArmor().ToString();
         weight.text = "Total Weight: " + player.GetWeight();
+        gold.text = "Gold: " + player.GetGold().ToString();
         UpdateStatusText();
     }
 

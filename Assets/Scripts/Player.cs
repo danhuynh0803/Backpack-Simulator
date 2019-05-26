@@ -44,6 +44,7 @@ public class Player : MonoBehaviour {
     public bool isEncumbered = false;
     public bool isDemoralized = false;
 
+    private int gold = 10;
     private int itemCap;
 
 
@@ -277,15 +278,27 @@ public class Player : MonoBehaviour {
         int bagWeight = 0;
         Inventory inventory = FindObjectOfType<Inventory>();
         if (inventory != null)
-        {
-            foreach (Item item in inventory.itemList)
+        {        
+            foreach (KeyValuePair<Item, int> entry in inventory.inventory)
             {
-                if (item != null)
-                {
-                    bagWeight += item.weight;
-                }
+                bagWeight += entry.Key.weight * entry.Value;
             }
         }
         return bagWeight + weight;
+    }
+
+    public int GetGold()
+    {
+        return gold;
+    }
+
+    public void IncrementGold(int gold)
+    {
+        this.gold += gold;
+    }
+
+    public void DecrementGold(int gold)
+    {
+        this.gold =(int)Mathf.Clamp((this.gold - gold), 0f, int.MaxValue);
     }
 }

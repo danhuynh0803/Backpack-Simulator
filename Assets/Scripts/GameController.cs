@@ -24,12 +24,13 @@ public class GameController : MonoBehaviour
                         //Later use a function to set from button
     private bool isGameOver;
     private float turnDelay = 1f; // Seconds before moving to next turn;
-    private MenuController menuController;
+    public MenuController menuController;
     private DialogManager dialogManager;
     [Header("Battle canvases")]
     public GameObject battleCanvas;
     public GameObject GameOverCanvas;
     public GameObject inventoryPanel;
+    public EnemyButtonEncounters currentEncounter;
     public bool isInCombat;
 
     private void Start()
@@ -39,7 +40,6 @@ public class GameController : MonoBehaviour
         isGameOver = false;
         //player = Player.player;
         player = FindObjectOfType<Player>();
-        menuController = FindObjectOfType<MenuController>();
         dialogManager = FindObjectOfType<DialogManager>();
         if (player == null)
         {
@@ -54,12 +54,13 @@ public class GameController : MonoBehaviour
         return enemy;
     }
 
-    public void SetupCombat(GameObject enemyObject)
+    public void SetupCombat(GameObject enemyObject, EnemyButtonEncounters enemyButtonEncounters)
     {
-        // Make a new reference to the Enemy script to avoid overwriting the values
-        GameObject newEnemyReference = Instantiate(enemyObject);
-        newEnemyReference.GetComponent<Enemy>().dialogManager = FindObjectOfType<DialogManager>();
-        EnterCombat(newEnemyReference.GetComponent<Enemy>());
+        currentEncounter = enemyButtonEncounters;
+           // Make a new reference to the Enemy script to avoid overwriting the values
+        enemyObject.GetComponent<Enemy>().dialogManager = FindObjectOfType<DialogManager>();
+
+        EnterCombat(enemyObject.GetComponent<Enemy>());
     }
 
     public void EnterCombat(Enemy newEnemy)
@@ -71,13 +72,14 @@ public class GameController : MonoBehaviour
         {     
             // Display any entering dialog we feel we need
             // "Player is battling a <enemy_name>"
-            if(enemy.health <= 0)
+            menuController.ToggleBattleCanvas();
+            menuController.inventorReturnButton.SetActive(false);
+            // Find treaure
+            if (enemy.health <= 0)
             {
-                menuController.ToggleBattleCanvas();
                 FindTreasure();
                 return;
             }
-            menuController.ToggleBattleCanvas();
             isInCombat = true;
             PrintStartComatText();
         }
@@ -134,6 +136,13 @@ public class GameController : MonoBehaviour
             case "end combat":
                 AddDropItemToPlayer();
                 break;
+            case "leave combat":
+                menuController.inventorReturnButton.SetActive(true);
+                menuController.ToggleBattleCanvas();
+                break;
+            case "find treasure":
+                AddDropItemToPlayer();
+                break;
             default:
                 break;
         }
@@ -185,13 +194,26 @@ public class GameController : MonoBehaviour
         dialogManager.isInDialog = true;
     }
 
+    void EnableNextEncounter()
+    {
+        if(currentEncounter != null)
+        {
+            currentEncounter.GetComponent<EnemyButtonEncounters>().EnableNextEncounters();
+        }
+    }
+
     void AddDropItemToPlayer()
     {
-        inventoryPanel.SetActive(true);
+        EnableNextEncounter();
+        //inventoryPanel.SetActive(true);
         FindObjectOfType<InventoryUI>().inventoryScrollBar.value = 0;
         Inventory.instance.AddItems(enemy.itemDropList);
         FindObjectOfType<InventoryUI>().inventoryScrollBar.value = 0;
         enemy = null;
+        Dialog leaveCombatDialog = new Dialog("leave combat", new string[] {""});
+        dialogManager.StartDialog(leaveCombatDialog);
+        dialogManager.isInDialog = true;
+        StartCoroutine(WaitUntilDialogIsOver("leave combat"));
     }
 
     public void FindTreasure()
@@ -204,16 +226,14 @@ public class GameController : MonoBehaviour
         string[] sentences =
         {
             "==========Found Treasure=========",
-            "Oh wow... more treasure....... or just more junk." + "\n",
-            dropList,
-            "\n" + "Please circle your next destination on the map.",
-            "Press Inventory to show the map."
+            "Oh wow... more treasure....... or just more junk.",
+            dropList
         };
         Dialog findTreasureDialog = new Dialog("find treasure", sentences);
         dialogManager.StartDialog(findTreasureDialog);
-        dialogManager.isInDialog = true;        
-        AddDropItemToPlayer();
+        dialogManager.isInDialog = true;
         dialogManager.ContinueToNextSentence();
+        StartCoroutine(WaitUntilDialogIsOver("find treasure"));
     }
 
     public void EndCombat()

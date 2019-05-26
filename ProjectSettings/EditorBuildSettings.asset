@@ -18,5 +18,5 @@ EditorBuildSettings:
     path: 
     guid: 71041f78bf74dcc43b4a733c3374f888
   - enabled: 1
-    path: Assets/_Scenes/DannyTestCrafting.unity
+    path: Assets/_Scenes/Main.unity
     guid: ed31bdf7e49318547b1c15abddd9f0a5

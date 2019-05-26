@@ -6,10 +6,14 @@ using UnityEngine.UI;
 public class CraftingUI : MonoBehaviour {
 
     public GameObject craftingInventorySlot;
+    public GameObject componentSlot;
     public Text itemName;
     public Text itemDescriptionText;
     public Image itemDescriptionIcon;
     public Text itemComponentText;
+
+    public GameObject componentGrid;
+
     private Recipe selectedRecipe;
     public GameObject craftingDescriptionPanel;
 
@@ -20,24 +24,47 @@ public class CraftingUI : MonoBehaviour {
         itemName.text = item.name;
         itemDescriptionText.text = item.description;
         itemDescriptionIcon.sprite = item.icon;
-        itemComponentText.text = "Made from: ";
-        for (int i = 0; i < recipe.components.Count; ++i)
+
+        foreach (Transform child in componentGrid.transform)
         {
-            itemComponentText.text += recipe.components[i];
-            if (i < recipe.components.Count - 1)
+            Destroy(child.gameObject);
+        }
+
+        // Evaluate for any duplicate components
+        
+        Dictionary<Item, int> componentItems = new Dictionary<Item, int>();
+        for (int i = 0; i < recipe.componentItems.Count; ++i)
+        {
+            Item cItem = recipe.componentItems[i];
+            if (componentItems.ContainsKey(cItem))
             {
-                itemComponentText.text += ", ";
+                componentItems[cItem]++;
             }
+            else
+            {
+                componentItems.Add(cItem, 1);
+            }
+            
+        }
+        
+
+        // Display each unique component needed to create the recipe
+   
+        foreach (KeyValuePair<Item, int> entry in componentItems)
+        {
+            Debug.Log("Add Comp Slot for Crafting");
+            GameObject compSlot = Instantiate(componentSlot, this.transform) as GameObject;
+            compSlot.GetComponent<ComponentSlot>().AddItem(entry.Key, entry.Value);
+            compSlot.transform.SetParent(componentGrid.transform);
         }
     }
 
-    // Update is called once per frame
     public void AddItemToUI(Recipe recipe)
     {
         //Debug.Log("AddItemToUI");
         GameObject invSlot = Instantiate(craftingInventorySlot, this.transform) as GameObject;
         invSlot.GetComponent<CraftingInventorySlot>().AddItem(recipe);
-        invSlot.transform.parent = gameObject.transform;
+        invSlot.transform.SetParent(gameObject.transform);
     }
 
     public void ClickButton()

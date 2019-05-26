@@ -1,0 +1,118 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1849486433065812
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4215475249016130}
+  - component: {fileID: 114855028856066734}
+  - component: {fileID: 6062749167462630657}
+  m_Layer: 0
+  m_Name: HauntedTree
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4215475249016130
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849486433065812}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 321.72827, y: 166.97159, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114855028856066734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849486433065812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deb5b13d3f3b6014587ecadf6892db15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mugshot: {fileID: 21300000, guid: eb024b6efdd84ec458ec428e0c0194ba, type: 3}
+  name: Haunted Tree
+  description: After consuming the Giant Insect population, the Giant Forest Spider
+    has moved on to travelers. Despite protests from local animal right activists,
+    the nearby kingdom has authorized the hunting of this animal.  Not a difficult
+    encouner but prepare Anti Venom for your Adventurer. Webs of Giant Spiders collect
+    a lot of loot.
+  menuSound: {fileID: 8300000, guid: 38a2d96397c99ab44868593fe2aa4909, type: 3}
+  maxHealth: 15
+  health: 15
+  damage: 2
+  armor: 0
+  itemDropList:
+  - {fileID: 114378295558346348, guid: 36457c0d323871b48b17f0567c5ed2d1, type: 3}
+  - {fileID: 114388840988385336, guid: a15f17c3c7014bb43b81202fbe1b0d44, type: 3}
+  - {fileID: 114388840988385336, guid: 83815c074f4cfd142b49ce118337b992, type: 3}
+  - {fileID: 114388840988385336, guid: 79c66ccdfc77fca49b172a2f3f11ade7, type: 3}
+  - {fileID: 114388840988385336, guid: fd9dde8c17064c048a2f0b82f01d7926, type: 3}
+  - {fileID: 114388840988385336, guid: f52a5ed758d5147479b5a0ae6b589986, type: 3}
+  - {fileID: 114388840988385336, guid: ca7132426e1b6fe4d854eb514180695d, type: 3}
+  - {fileID: 114388840988385336, guid: 8391f0b4146ab40409d48dbfdecfe8f6, type: 3}
+  - {fileID: 114378295558346348, guid: 36457c0d323871b48b17f0567c5ed2d1, type: 3}
+  - {fileID: 114388840988385336, guid: 8391f0b4146ab40409d48dbfdecfe8f6, type: 3}
+  dialogManager: {fileID: 0}
+--- !u!212 &6062749167462630657
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849486433065812}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: eb024b6efdd84ec458ec428e0c0194ba, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 256, y: 256}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0

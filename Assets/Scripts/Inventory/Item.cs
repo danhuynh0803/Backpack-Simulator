@@ -9,7 +9,7 @@ public abstract class Item : MonoBehaviour {
     public string description;
     public int weight;
     public Sprite icon;
-
+    public int cost;
     // Provides some form of effect
     // return true if its a consumable and will disappear upon use
     // else return false to not have it disappear from list upon use

@@ -9,6 +9,7 @@ public class ElementalPotion : Item {
 
     public override bool ActivateEffect()
     {
+        //Debug.Log(name + " ActivateEffect");
         FindObjectOfType<Player>().AddStatusEffect(Status.ElementalDamage, elemental);
         SoundController.Play((int)SFX.Potion, 0.5f);
         return true;

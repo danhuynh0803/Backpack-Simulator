@@ -45,6 +45,7 @@ public class CraftingInventorySlot : MonoBehaviour {
 
     public void ClickItemButton()
     {
+        Debug.Log("Clicked Item button");
         GameObject itemDescriptionPanel = FindObjectOfType<CraftingUI>().craftingDescriptionPanel;
         itemDescriptionPanel.SetActive(true);
         FindObjectOfType<CraftingUI>().SetItemDescription(recipe);

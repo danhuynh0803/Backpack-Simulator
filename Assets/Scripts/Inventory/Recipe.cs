@@ -5,6 +5,6 @@ using UnityEngine;
 public class Recipe : MonoBehaviour {
 
     public Item recipeItem;
-    public List<string> components = new List<string>();
-    
+    public List<Item> componentItems = new List<Item>();
+
 }

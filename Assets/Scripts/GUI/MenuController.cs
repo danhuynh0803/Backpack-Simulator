@@ -7,8 +7,7 @@ public class MenuController : MonoBehaviour
 {    
     public List<GameObject> battleCanvas = new List<GameObject>();
     public GameObject encountersCanvas;
-    public GameObject craftingButton;
-
+    public GameObject inventorReturnButton;
     [Header("Pause Menu related")]
     public GameObject controlMenu;
     public GameObject soundMenu;
@@ -80,7 +79,7 @@ public class MenuController : MonoBehaviour
         //GameController.level = (int)GameController.Level.story;
         StartCoroutine(ChangeScene(sceneName));
         /*if (isGameMenu)
-            GUISoundController.Play((int)GUISFX.Load)*/;
+            GUISoundController.Play((int)GUISFX.Load);*/
     }
 
     IEnumerator ChangeScene(string sceneName)
@@ -117,27 +116,20 @@ public class MenuController : MonoBehaviour
 
     public void ToggleBattleCanvas()
     {
-        if (!GameController.instance.isInCombat)
+        isBattleCanvasOpen = !isBattleCanvasOpen;
+        SoundController.Play((int)SFX.Backpack, 0.3f);
+        if (isBattleCanvasOpen)
         {
-            isBattleCanvasOpen = !isBattleCanvasOpen;
-            SoundController.Play((int)SFX.Backpack, 0.3f);
-            if (isBattleCanvasOpen)
+            foreach (GameObject canvas in battleCanvas)
             {
-                foreach (GameObject canvas in battleCanvas)
-                {
-                    canvas.SetActive(true);
-                }
-                craftingButton.SetActive(false);
-                encountersCanvas.SetActive(false);
+                canvas.SetActive(true);
             }
-            else
+        }
+        else
+        {
+            foreach (GameObject canvas in battleCanvas)
             {
-                foreach (GameObject canvas in battleCanvas)
-                {
-                    canvas.SetActive(false);
-                }
-                craftingButton.SetActive(true);
-                encountersCanvas.SetActive(true);
+                canvas.SetActive(false);
             }
         }
     }
@@ -149,7 +141,7 @@ public class MenuController : MonoBehaviour
             /*if (isGameMenu)
                 GUISoundController.Play((int)GUISFX.Click);
             else
-            SoundController.Play((int)SFX.Click)*/;
+            SoundController.Play((int)SFX.Click);*/
             if (boolean)
                 menuStack.Push(controlMenu);
             else
@@ -179,7 +171,7 @@ public class MenuController : MonoBehaviour
 
         if (creditMenu != null)
         {
-            /*GUISoundController.Play((int)GUISFX.Click)*/;
+            /*GUISoundController.Play((int)GUISFX.Click);*/
             if (boolean)
                 menuStack.Push(creditMenu);
             else
@@ -188,7 +180,7 @@ public class MenuController : MonoBehaviour
         }
     }
 
-    public void ToggleGameModeMenu(bool boolean)
+    public void ToggleGameModeMenu()
     {
         mainMenuPanel.SetActive(false);
         /*
@@ -209,7 +201,7 @@ public class MenuController : MonoBehaviour
 
     public void ExitGame()
     {
-        /*GUISoundController.Play((int)GUISFX.Click)*/;
+        /*GUISoundController.Play((int)GUISFX.Click);*/
         Application.Quit();
     }
 

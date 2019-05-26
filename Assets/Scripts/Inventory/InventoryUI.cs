@@ -17,7 +17,6 @@ public class InventoryUI : MonoBehaviour {
     }
     #endregion
 
-    Inventory inventory;
     public GameObject itemDescriptionPanel;
     public Text itemName;
     public Text itemDescriptionText;
@@ -27,10 +26,21 @@ public class InventoryUI : MonoBehaviour {
     private Item selectedItem;
     private int selectedItemIndex;
     
-	// Use this for initialization
-	void Start () {
-        inventory = Inventory.instance;
-	} 
+    public void Start()
+    {
+        Debug.Log("UI Start called");
+
+    }
+
+    private void Update()
+    {
+        // For testing 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            HealthPotion temp = new HealthPotion();
+            AddItemToUI(temp, 0);
+        }
+    }
 
     public void SetItemDescription(Item item, int slotIndex)
     {
@@ -41,12 +51,11 @@ public class InventoryUI : MonoBehaviour {
         selectedItemIndex = slotIndex;
     }
 
-    public void UseItem()
+    public void UseItemButton()
     {
         if (selectedItem.ActivateEffect())
         {
-            DropItem();
-            selectedItem = null;
+            Inventory.instance.RemoveItem(selectedItem);
         }
         else
         {
@@ -54,11 +63,9 @@ public class InventoryUI : MonoBehaviour {
         }
     }
 
-    public void DropItem()
+    public void DiscardItemButton()
     {
-        inventory.RemoveItem(selectedItemIndex);
-        itemDescriptionPanel.SetActive(false);
-        selectedItem = null;
+        // TODO
     }
     
 	// Update is called once per frame
@@ -67,7 +74,7 @@ public class InventoryUI : MonoBehaviour {
         //Debug.Log("AddItemToUI");
         GameObject invSlot = Instantiate(inventorySlot, this.transform) as GameObject;
         invSlot.GetComponent<InventorySlot>().AddItem(item, slotIndex);
-        invSlot.transform.parent = gameObject.transform;       
+        invSlot.transform.SetParent(gameObject.transform);       
 	}
 
     public void DeleteAllInventoryUI()
@@ -78,21 +85,16 @@ public class InventoryUI : MonoBehaviour {
         }
     }
 
-    public void UpdateInventoryUI(List<Item> itemList)
+    public void UpdateInventoryUI()
     {
         // Delete all objects then rebuild, so that each object shifts over
         DeleteAllInventoryUI();
 
-        //Debug.Log(itemList.Count);
+        // Create the inventory slots based on what is currently stored in the inventory
         int slotIndex = 0;
-        foreach (Item item in itemList)
-        {         
-            if (item != null)
-            {
-                //Debug.Log("Item name:" + item.name);
-                AddItemToUI(item, slotIndex);
-                slotIndex++;
-            }
-        }
+        foreach (KeyValuePair<Item, int> entry in Inventory.instance.inventory)
+        {
+            AddItemToUI(entry.Key, slotIndex++);
+        }      
     }
 }

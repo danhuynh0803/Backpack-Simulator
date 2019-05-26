@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Treasure : Enemy
 {
+    public bool isTreasure;
 
     public override void Attack()
     {

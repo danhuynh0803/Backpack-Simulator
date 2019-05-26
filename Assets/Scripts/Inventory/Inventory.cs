@@ -16,58 +16,35 @@ public class Inventory : MonoBehaviour {
     }
     #endregion
 
-    public List<Item> itemList = new List<Item>(); 
-    private InventoryUI inventoryUI;
+    public List<Item> startingItems;
+    private InventorySlot[] slots = new InventorySlot[30];
+    public Dictionary<Item, int> inventory = new Dictionary<Item, int>(); 
     
     private void Start()
-    {
-        inventoryUI = FindObjectOfType<InventoryUI>();
-        if (inventoryUI == null)
-        {
-            Debug.LogError("inventoryUI is null");
-        }
-
-        // Add initial items into the bag
-        int count = 0;
-        foreach (Item item in itemList)
+    {        
+        foreach (Item item in startingItems)
         {
             if (item != null)
             {
-                inventoryUI.AddItemToUI(item, count);
-                count++;
+                AddItem(item);                               
             }
-        }
+        }   
     }
 
-    private void Update()
+    public void AddItem(Item newItem)
     {
-        /*
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            AddItem(null);
+        // Check if the item already exists in the inventory                
+        // if so, just increment the count 
+        if (inventory.ContainsKey(newItem))
+        {            
+            inventory[newItem]++;
+            //Debug.Log(inventory[newItem]);
         }
-
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            RemoveItem(0);
-        }
-        */
-    }
-
-    public void AddItem(Item item)
-    {
-        //Debug.Log("AddItem");
-        itemList.Add(item);
-
-        if (inventoryUI == null)
-        {
-            inventoryUI = InventoryUI.instance;
-        }
-
-        if (inventoryUI != null)
-            inventoryUI.AddItemToUI(item, GetTotalItems()-1);
+        // else, create a list of size one for that new item
         else
-            Debug.Log("inventoryUI is null when adding");
+        {
+            inventory.Add(newItem, 1);         
+        }                  
     }
 
     public void AddItems(List<Item> droppedItems)
@@ -90,26 +67,20 @@ public class Inventory : MonoBehaviour {
         }        
     }
 
-    public void RemoveItem(int removeItemIndex)
+    public void RemoveItem(Item item)
     {
-        itemList.RemoveAt(removeItemIndex);      
-        inventoryUI = FindObjectOfType<InventoryUI>();
+        inventory[item]--;
 
-        if (itemList == null)
+        if (inventory[item] <= 0)
         {
-            Debug.Log("itemList is null");
+            inventory.Remove(item);
         }
-
-        if (inventoryUI == null)
-        {
-            Debug.Log("inventoryUI is null");
-        }
-        inventoryUI.UpdateInventoryUI(itemList);        
     }
 
     public int GetTotalItems()
     {
-        return itemList.Count;
+        // Remove later, not needed
+        return 0;
     }
     
 }

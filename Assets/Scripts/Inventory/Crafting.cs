@@ -17,12 +17,14 @@ public class Crafting : MonoBehaviour {
     {
         CraftingUI craftingUI = FindObjectOfType<CraftingUI>();
         inventory = FindObjectOfType<Inventory>();
-
-        foreach (Recipe recipe in recipes)
+        if (craftingUI != null)
         {
-            if (recipes != null)
+            foreach (Recipe recipe in recipes)
             {
-                craftingUI.AddItemToUI(recipe);
+                if (recipes != null)
+                {
+                    craftingUI.AddItemToUI(recipe);
+                }
             }
         }
     }
@@ -32,6 +34,7 @@ public class Crafting : MonoBehaviour {
         isCrafting = !isCrafting;
         if (isCrafting)
         {
+            //inventoryBlockRayCast.SetActive(false);
             foreach (GameObject canvas in craftingCanvases)
             {
                 if (canvas != null)
@@ -40,6 +43,7 @@ public class Crafting : MonoBehaviour {
         }
         else
         {
+            //inventoryBlockRayCast.SetActive(true);
             foreach (GameObject canvas in craftingCanvases)
             {
                 if (canvas != null)
@@ -50,68 +54,45 @@ public class Crafting : MonoBehaviour {
 
     public bool HasAllComponents(Recipe recipe)
     {
-        if (inventory == null)
+        Dictionary<Item, int> componentDict = new Dictionary<Item, int>();
+        for (int i = 0; i < recipe.componentItems.Count; ++i)
         {
-            inventory = FindObjectOfType<Inventory>();
-        }
-        
-        componentNames = recipe.components.ToArray();
-        bool[] hasAllComponents = new bool[componentNames.Length];
-
-        // Check that player has the prerequisite items for the recipe
-        for (int i = 0; i < componentNames.Length; ++i)
-        {
-            string componentName = componentNames[i];
-            componentName = Regex.Replace(componentName, @"\s+", "");
-            //Debug.Log(componentName);
-            for (int j = 0; j < inventory.itemList.Count; ++j)
+            Item cItem = recipe.componentItems[i];
+            if (componentDict.ContainsKey(cItem))
             {
-                string itemName = inventory.itemList[j].name;
-                itemName = Regex.Replace(itemName, @"\s+", "");
-                if (itemName.ToLower().Equals(componentName.ToLower()))
-                {                
-                    hasAllComponents[i] = true;
-                }
+                componentDict[cItem]++;
+            }
+            else
+            {
+                componentDict.Add(cItem, 1);
+            }
+
+        }
+
+        foreach (KeyValuePair<Item, int> entry in componentDict)
+        {
+            if (!Inventory.instance.inventory.ContainsKey(entry.Key) ||
+                Inventory.instance.inventory[entry.Key] < entry.Value)
+            {
+                return false;
             }
         }
 
-        bool canCraft = true;
-        foreach (bool hasComponent in hasAllComponents)
-        {
-            if (!hasComponent)
-                canCraft = false;
-        }
-
-        return canCraft;
+        return true;
     }
 
     public void Craft(Recipe recipe)    
-    {        
-        if (inventory == null)
-        {
-            inventory = FindObjectOfType<Inventory>();
-        }
-        slotIndices = new int[recipe.components.Count];
-        componentNames = recipe.components.ToArray();
-        // Check that player has the prerequisite items for the recipe
-        if (HasAllComponents())
-        {
-            Debug.Log("Has all componenets");
-            // Remove the items at the slots 
-            // Make sure to sort first by lowest since each item will have a new slot index 
-            // that will be one less as we shift items left
-            Array.Sort(slotIndices);
-            inventory.RemoveItem(slotIndices[0]);
-            for (int i = 1; i < slotIndices.Length; ++i)
-            {
-                // Shift the second item onward by one to take into account the shifting 
-                // of slot indices when calling remove item
-                inventory.RemoveItem(slotIndices[i] - 1);
-            }
-
+    {               
+        if (HasAllComponents(recipe))
+        {      
             // Add the newly crafted item into inventory
             SoundController.Play((int)SFX.Crafting, 0.5f);
             inventory.AddItem(recipe.recipeItem);
+
+            foreach (Item compItem in recipe.componentItems)
+            {
+                inventory.RemoveItem(compItem);
+            }                   
         }
         else
         {
@@ -119,6 +100,7 @@ public class Crafting : MonoBehaviour {
         }       
     }
 
+    // Used previously when components were strings, Now no longer used
     public bool HasAllComponents()
     {
         bool[] hasAllComponents = new bool[slotIndices.Length];
@@ -128,9 +110,10 @@ public class Crafting : MonoBehaviour {
             string componentName = componentNames[i];
             componentName = Regex.Replace(componentName, @"\s+", "");
             //Debug.Log(componentName);
-            for (int j = 0; j < inventory.itemList.Count; ++j)
-            {                
-                string itemName = inventory.itemList[j].name;
+            for (int j = 0; j < inventory.inventory.Count; ++j)
+            {
+                //string itemName = inventory.inventory[j].name;
+                string itemName = "";
                 itemName = Regex.Replace(itemName, @"\s+", "");
                 if (itemName.ToLower().Equals(componentName.ToLower()))
                 {
